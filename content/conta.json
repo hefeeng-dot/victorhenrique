@@ -1,0 +1,68 @@
+{
+  "code": "CONTA",
+  "title": "Automatize, confira ou deixe com gente",
+  "summary": "O guia para decidir o que vale entregar para a IA antes que a conferência coma o tempo que ela poupou.",
+  "date": "2026-09-28",
+  "accent": "#6B8F71",
+  "intro": "Automação só compensa quando conferir o resultado custa menos do que fazer na mão. Este guia ajuda você a separar as tarefas em duas pilhas: o que a máquina consegue conferir sozinha e o que precisa de olho e decisão. Faça a conta uma vez, tarefa por tarefa, e automatize só o que fecha positivo.",
+  "items": [
+    {
+      "name": "1. A conta dos minutos",
+      "sections": [
+        {"label": "O que é", "text": "Para cada tarefa que você pensa em automatizar, anote três números: quanto tempo leva na mão hoje, quanto tempo a ferramenta leva, e quanto tempo você gasta conferindo o que ela entregou."},
+        {"label": "Como fazer", "list": [
+          "Tempo na mão (M): cronometre a tarefa feita do jeito atual.",
+          "Tempo da ferramenta (F): quanto você gasta preparando e rodando a automação.",
+          "Tempo de conferência (C): quanto leva para checar o resultado até confiar nele.",
+          "Saldo = M − (F + C). Se der negativo, a automação está custando tempo."
+        ]},
+        {"label": "Cuidado", "text": "Meça a conferência de verdade por uma ou duas semanas. É o número que as pessoas mais subestimam, e é ele que vira a conta.", "warn": true}
+      ]
+    },
+    {
+      "name": "2. As três perguntas antes de automatizar",
+      "sections": [
+        {"label": "Quando usar", "text": "Antes de montar qualquer automação, responda para a tarefa específica."},
+        {"label": "As perguntas", "list": [
+          "Dá para conferir o resultado com uma regra objetiva (soma, total, formato, lista)? Se sim, a máquina pode conferir.",
+          "Se sair errado, quanto custa o erro e quem vê primeiro? Erro barato e interno pode ir; erro caro e na frente do cliente, não.",
+          "A tarefa pede julgamento (tom, prioridade, negociação, exceção)? Se sim, fica com gente."
+        ]}
+      ]
+    },
+    {
+      "name": "3. Pilha 1: o que a máquina confere",
+      "sections": [
+        {"label": "O que é", "text": "Tarefas em que o resultado pode ser checado por outra regra ou outro programa. Aqui a conferência é barata, então a automação costuma fechar positiva."},
+        {"label": "Casos de uso", "list": [
+          "Somar planilhas e bater o total com o valor esperado.",
+          "Conferir se todos os arquivos de uma lista chegaram e estão no formato certo.",
+          "Comparar duas listas (pedido × entregue, orçado × comprado) e apontar as diferenças.",
+          "Renomear, organizar e mover arquivos seguindo um padrão fixo.",
+          "Preencher modelos com dados que já existem em outra base."
+        ]}
+      ]
+    },
+    {
+      "name": "4. Pilha 2: o que precisa de olho e decisão",
+      "sections": [
+        {"label": "O que é", "text": "Tarefas em que conferir exige ler, interpretar e decidir. A IA pode ajudar a rascunhar, mas a revisão é item por item, e é aqui que a conta costuma virar negativa."},
+        {"label": "Casos de uso", "list": [
+          "Responder cliente em situação delicada (atraso, cobrança, reclamação).",
+          "Decidir prioridade quando duas coisas urgentes disputam o mesmo recurso.",
+          "Aprovar valores, contratos e escopo.",
+          "Qualquer coisa que sai com o seu nome para fora da empresa."
+        ]},
+        {"label": "Sobre estes casos de uso", "text": "Usar IA aqui não é proibido. Só entre sabendo que o tempo de conferência vai ser alto e faça a conta antes."}
+      ]
+    },
+    {
+      "name": "5. Prompt para separar as suas tarefas",
+      "sections": [
+        {"label": "Quando usar", "text": "Quando você tem uma lista de tarefas repetitivas e quer uma primeira triagem. Cole no ChatGPT, Claude ou Gemini e troque o que está entre colchetes."}
+      ],
+      "prompt": "Vou te passar uma lista de tarefas que eu faço toda semana. Para cada uma, classifique em:\n\nPILHA 1: o resultado pode ser conferido por uma regra objetiva (soma, total, formato, comparação de listas).\nPILHA 2: conferir exige leitura, interpretação ou decisão.\n\nPara cada tarefa, diga também: quanto custa um erro (baixo, médio, alto) e quem veria o erro primeiro (eu, a equipe ou o cliente). No fim, indique no máximo 3 tarefas da Pilha 1 por onde começar. Não recomende automatizar nada da Pilha 2 com erro de custo alto.\n\nMinhas tarefas:\n[liste aqui, uma por linha, com quanto tempo cada uma leva hoje]"
+    }
+  ],
+  "closing": "Regra de bolso: automação boa não é a que trabalha sozinha, é a que erra barato. Comece pela Pilha 1, meça a conferência por duas semanas e só então avance."
+}
