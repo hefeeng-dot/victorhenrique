@@ -107,13 +107,51 @@ ARROW = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v
          'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
-def render_section_body(s):
-    """Uma seção pode ter texto, lista ("list") e blocos de código copiáveis ("code")."""
+def svg(paths, cls=""):
+    c = f' class="{cls}"' if cls else ""
+    return (f'<svg{c} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" '
+            f'stroke-linecap="round" stroke-linejoin="round">{paths}</svg>')
+
+
+ICON_CHECK = svg('<path d="m5 12.5 4.5 4.5L19 7.5"/>')
+ICON_SPARK = svg('<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M6.3 17.7l2.5-2.5M15.2 8.8l2.5-2.5"/>')
+ICON_TERM = svg('<rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3M13 15h4"/>')
+ICON_INFO = svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>')
+ICON_DOWN = svg('<path d="M12 5v14M6 13l6 6 6-6"/>')
+ICON_CHEVRON = svg('<path d="m6 9 6 6 6-6"/>', "chev")
+
+
+def section_role(s):
+    """Papel visual da seção. Pode ser forçado com "type" no JSON; senão é deduzido.
+    lead = o que é · uses = casos de uso · reqs = pré-requisitos · step = tem comandos
+    warn = cuidado · info = o resto"""
+    if s.get("type"):
+        return s["type"]
+    if s.get("warn"):
+        return "warn"
+    if s.get("code"):
+        return "step"
+    label = s["label"].lower()
+    if label.startswith(("casos de uso", "quando usar", "pra que serve", "para que serve")):
+        return "uses"
+    if label.startswith("antes de começar"):
+        return "reqs"
+    if label.startswith(("o que é", "o que faz")):
+        return "lead"
+    return "info"
+
+
+def text_and_list(s, list_cls="bullets"):
     out = []
     if s.get("text"):
         out.append(f'<p>{E(s["text"])}</p>')
     if s.get("list"):
-        out.append('<ul class="bullets">' + "".join(f'<li>{E(x)}</li>' for x in s["list"]) + '</ul>')
+        out.append(f'<ul class="{list_cls}">' + "".join(f'<li>{E(x)}</li>' for x in s["list"]) + '</ul>')
+    return "".join(out)
+
+
+def codeblocks(s):
+    out = []
     for c in s.get("code", []):
         if c.get("caption"):
             out.append(f'<p class="caption">{E(c["caption"])}</p>')
@@ -122,9 +160,43 @@ def render_section_body(s):
     return "".join(out)
 
 
+def render_info(s):
+    return f'<div class="sec info"><b>{E(s["label"])}</b>{text_and_list(s)}</div>'
+
+
+def render_uses(s, notes):
+    if s.get("list"):
+        cards = "".join(f'<li>{ICON_SPARK}<span>{E(x)}</span></li>' for x in s["list"])
+        body = (f'<p>{E(s["text"])}</p>' if s.get("text") else "") + f'<ul class="use-grid">{cards}</ul>'
+    else:
+        body = f'<p class="use-one">{ICON_SPARK}<span>{E(s.get("text", ""))}</span></p>'
+    note = "".join(f'<p class="note">{ICON_INFO}<span><b>{E(x["label"])}:</b> {E(x.get("text", ""))}</span></p>'
+                   for x in notes)
+    return f'<div class="sec uses"><h3>{E(s["label"])}</h3>{body}{note}</div>'
+
+
+def render_warn(s):
+    return (f'<div class="sec warn">{WARN_ICON}<div><h3>{E(s["label"])}</h3>'
+            f'{text_and_list(s)}</div></div>')
+
+
+def render_reqs(s):
+    items = s.get("list") or ([s["text"]] if s.get("text") else [])
+    lis = "".join(f'<li>{ICON_CHECK}<span>{E(x)}</span></li>' for x in items)
+    return f'<div class="reqs"><h4>{E(s["label"])}</h4><ul>{lis}</ul></div>'
+
+
+def render_step(s):
+    txt = f'<p>{E(s["text"])}</p>' if s.get("text") else ""
+    return (f'<div class="step"><h4>{ICON_TERM}<span>{E(s["label"])}</span></h4>'
+            f'{txt}{codeblocks(s)}</div>')
+
+
 def render_item(it, n):
+    """Organiza o item em camadas: primeiro o que qualquer pessoa precisa (o que é, pra que
+    serve, cuidados); a parte técnica (requisitos e comandos) fica num bloco que abre."""
     cls = "item reveal draft" if it.get("draft") else "item reveal"
-    out = [f'<article class="{cls}"><div class="item-head"><span class="num">{n:02d}</span>'
+    out = [f'<article class="{cls}" id="{E(item_anchor(it))}"><div class="item-head"><span class="num">{n:02d}</span>'
            f'<h2>{E(it["name"])}</h2>']
     if it.get("url"):
         out.append(f'<a class="visit" href="{E(it["url"])}" target="_blank" rel="noopener">'
@@ -132,19 +204,86 @@ def render_item(it, n):
     out.append('</div>')
     if it.get("chips"):
         out.append('<ul class="chips">' + "".join(f'<li>{E(c)}</li>' for c in it["chips"]) + '</ul>')
-    out.append('<div class="item-body">')
-    for s in it.get("sections", []):
-        body = render_section_body(s)
-        if s.get("warn"):
-            out.append(f'<div class="sec warn">{WARN_ICON}<div><b>{E(s["label"])}</b>{body}</div></div>')
+
+    secs = [(section_role(s), s) for s in it.get("sections", [])]
+    first_step = next((i for i, (r, _) in enumerate(secs) if r == "step"), len(secs))
+    top, uses, warns, tech = [], [], [], []
+    i = 0
+    while i < len(secs):
+        role, s = secs[i]
+        if role == "uses":
+            notes = []
+            while i + 1 < len(secs) and secs[i + 1][0] == "info" and \
+                    secs[i + 1][1]["label"].lower().startswith(("sobre est", "nota sobre")):
+                i += 1
+                notes.append(secs[i][1])
+            uses.append(render_uses(s, notes))
+        elif role == "warn":
+            warns.append(render_warn(s))
+        elif role == "lead":
+            top.append(f'<div class="lead-sec">{text_and_list(s)}</div>' if not top
+                       else render_info(s))
+        elif role in ("reqs", "step"):
+            tech.append((role, s))
+        elif i > first_step:
+            tech.append((role, s))
         else:
-            out.append(f'<div class="sec"><b>{E(s["label"])}</b>{body}</div>')
+            top.append(render_info(s))
+        i += 1
+
+    out.append('<div class="item-body">')
+    out.extend(top)
+    out.extend(uses)
+    out.extend(warns)
     if it.get("prompt"):
         out.append(f'<div class="prompt"><div class="prompt-bar"><span>Prompt</span>'
                    f'<button class="copy" type="button">Copiar</button></div>'
                    f'<pre>{E(it["prompt"])}</pre></div>')
+    if tech:
+        steps = sum(1 for r, _ in tech if r == "step")
+        inner = []
+        for role, s in tech:
+            if role == "reqs":
+                inner.append(render_reqs(s))
+            elif role == "step":
+                inner.append(render_step(s))
+            else:
+                inner.append(render_info(s))
+        out.append(f'<details class="howto"><summary><span class="howto-ico">{ICON_TERM}</span>'
+                   f'<span class="howto-txt"><b>Como instalar e usar</b>'
+                   f'<small>{steps} {"etapa" if steps == 1 else "etapas"} com comandos prontos para copiar</small></span>'
+                   f'{ICON_CHEVRON}</summary><div class="howto-body">{"".join(inner)}</div></details>')
     out.append("</div></article>")
     return "".join(out)
+
+
+def item_anchor(it):
+    import re, unicodedata
+    s = unicodedata.normalize("NFKD", it["name"]).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-") or "item"
+
+
+def first_sentence(it):
+    for s in it.get("sections", []):
+        if section_role(s) == "lead" and s.get("text"):
+            t = s["text"]
+            cut = t.find(". ")
+            t = t if cut == -1 else t[:cut + 1]
+            return t if len(t) <= 150 else t[:147].rsplit(" ", 1)[0] + "…"
+    return ""
+
+
+def render_toc(items):
+    """Resumo no topo: todos os itens de relance, com atalho para cada um."""
+    rows = []
+    for n, it in enumerate(items, 1):
+        desc = first_sentence(it)
+        d = f'<small>{E(desc)}</small>' if desc else ""
+        rows.append(f'<li><a href="#{E(item_anchor(it))}"><span class="num">{n:02d}</span>'
+                    f'<span class="toc-txt"><b>{E(it["name"])}</b>{d}</span>'
+                    f'<span class="toc-go">{ICON_DOWN}</span></a></li>')
+    return (f'<nav class="toc reveal" aria-label="Neste material"><h3>Neste material</h3>'
+            f'<ol>{"".join(rows)}</ol></nav>')
 
 
 JS = """<script>
@@ -224,7 +363,10 @@ for path in sorted(glob.glob(os.path.join(ROOT, "content", "*.json"))):
              f'<li>Publicado em {fmt_date(data["date"])}</li>')
     if data.get("verified"):
         h.append(f'<li class="ok">Links conferidos em {E(data["verified"])}</li>')
-    h.append('</ul></section><div class="items">')
+    h.append('</ul></section>')
+    if len(items) >= 3:
+        h.append(render_toc(items))
+    h.append('<div class="items">')
     h.extend(render_item(it, n) for n, it in enumerate(items, 1))
     h.append('</div>')
     if data.get("closing"):

@@ -58,6 +58,7 @@ A Vercel **não roda build**: ela publica os arquivos como estão. Por isso os H
 - Campos opcionais do item: `"chips": ["★ 107 mil", "Licença MIT"]` (selos abaixo do nome; o primeiro ganha a cor do post).
 - Uma seção pode ter `text`, `list` (lista de frases) e `code` (lista de `{"caption": "opcional", "code": "comando"}`, cada bloco ganha botão "Copiar"). Pode combinar os três.
 - `"warn": true` destaca a seção em vermelho (use para riscos reais).
+- **Hierarquia da página:** o build organiza cada item em camadas, pelo rótulo da seção. "O que é/O que faz" vira o texto principal; "Casos de uso/Quando usar" vira o bloco de cartões; `warn` fica sempre visível; "Antes de começar" e toda seção com `code` vão para o bloco recolhido "Como instalar e usar" (também as seções comuns que vierem depois do primeiro comando). "Sobre estes casos de uso" logo após os casos de uso vira nota deles. Para forçar um papel, use `"type"`: `lead`, `uses`, `reqs`, `step`, `warn` ou `info`. Páginas com 3 itens ou mais ganham o resumo "Neste material" no topo.
 - `"draft": true` no item deixa ele fora da página. Para ver com rascunhos: `python3 build.py --drafts`.
 - `verified` é a data em que os links foram conferidos. Mostre-a só se realmente conferiu.
 - Cores de destaque usadas: terracota `#D97757`, sage `#6B8F71`, slate `#5B7C99`, heather `#A66B7A`. Varie entre os posts.
