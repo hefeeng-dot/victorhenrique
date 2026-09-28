@@ -1,4 +1,4 @@
-# CLAUDE.md — Site de iscas de @victor.henrique
+# CLAUDE.md — Site de iscas de @victor.henriquef
 
 Site estático hospedado na Vercel. Cada post do Instagram/TikTok termina com "Comente CÓDIGO que eu te mando no direct", e cada código tem uma página aqui (`/codigo/`). O `index.html` cataloga todas.
 
@@ -55,6 +55,8 @@ A Vercel **não roda build**: ela publica os arquivos como estão. Por isso os H
 }
 ```
 
+- Campos opcionais do item: `"chips": ["★ 107 mil", "Licença MIT"]` (selos abaixo do nome; o primeiro ganha a cor do post).
+- Uma seção pode ter `text`, `list` (lista de frases) e `code` (lista de `{"caption": "opcional", "code": "comando"}`, cada bloco ganha botão "Copiar"). Pode combinar os três.
 - `"warn": true` destaca a seção em vermelho (use para riscos reais).
 - `"draft": true` no item deixa ele fora da página. Para ver com rascunhos: `python3 build.py --drafts`.
 - `verified` é a data em que os links foram conferidos. Mostre-a só se realmente conferiu.

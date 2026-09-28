@@ -1,7 +1,16 @@
 {
-  "handle": "@victor.henrique",
+  "handle": "@victor.henriquef",
   "library_name": "Biblioteca",
-  "site_title": "Biblioteca · @victor.henrique",
+  "site_title": "Biblioteca · @victor.henriquef",
   "site_intro": "Os links, prompts e materiais prometidos nos posts, reunidos em um só lugar. Veio pelo código que comentou? Busque por ele aqui embaixo.",
+  "links_intro": "Ferramentas, prompts e achados úteis de tecnologia. Tudo o que eu mostro nos posts fica por aqui.",
+  "links": [
+    {
+      "label": "Instagram",
+      "sub": "@victor.henriquef",
+      "url": "https://www.instagram.com/victor.henriquef/",
+      "icon": "instagram"
+    }
+  ],
   "noindex": true
 }

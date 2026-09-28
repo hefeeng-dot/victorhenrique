@@ -1,4 +1,4 @@
-# Site de iscas — @victor.henrique
+# Site de iscas — @victor.henriquef
 
 Site estático: um index com o catálogo e uma página por código (`/4tqzc/`, `/discorda/`).
 Sem dependências: o `build.py` usa só o Python 3 padrão.

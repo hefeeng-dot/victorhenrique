@@ -60,12 +60,31 @@ def head(title, description, accent, css_href):
             f'<div class="glow" aria-hidden="true"></div>')
 
 
-def nav(home_href, current_is_home):
-    lib = f'<span class="nav-link is-current">{E(LIB)}</span>' if current_is_home else \
-          f'<a class="nav-link" href="{home_href}">← {E(LIB)}</a>'
+def nav(root, current=None):
+    """root: caminho até a raiz do site ("./" ou "../"). current: "lib", "links" ou None."""
+    def link(key, href, label):
+        if current == key:
+            return f'<span class="nav-link is-current">{E(label)}</span>'
+        return f'<a class="nav-link" href="{href}">{E(label)}</a>'
     return (f'<header class="nav"><div class="nav-in">'
-            f'<a class="brand" href="{home_href}"><span class="dot"></span>{E(HANDLE)}</a>{lib}'
+            f'<a class="brand" href="{root}"><span class="dot"></span>{E(HANDLE)}</a>'
+            f'<nav class="nav-links">{link("lib", root, LIB)}{link("links", root + "links/", "Links")}</nav>'
             f'</div></header>')
+
+
+ICONS = {
+    "instagram": '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>',
+    "tiktok": '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2.2 4.4 5 4.6"/>',
+    "youtube": '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"/>',
+    "mail": '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>',
+    "library": '<path d="M5 4h4v16H5zM10 4h4v16h-4zM15.5 5l3.8-1 3 15.4-3.8 1z"/>',
+    "link": '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+}
+
+
+def icon(name):
+    return (f'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" '
+            f'stroke-linecap="round" stroke-linejoin="round">{ICONS.get(name, ICONS["link"])}</svg>')
 
 
 def fmt_date(iso):
@@ -73,8 +92,12 @@ def fmt_date(iso):
 
 
 def domain(url):
-    host = urlparse(url).netloc or url
-    return host[4:] if host.startswith("www.") else host
+    u = urlparse(url)
+    host = u.netloc or url
+    host = host[4:] if host.startswith("www.") else host
+    if host == "github.com" and u.path.strip("/"):
+        return u.path.strip("/")  # mostra dono/repo, que é o que identifica o projeto
+    return host
 
 
 WARN_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 21h20L12 3Z" fill="none" '
@@ -84,6 +107,21 @@ ARROW = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v
          'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
+def render_section_body(s):
+    """Uma seção pode ter texto, lista ("list") e blocos de código copiáveis ("code")."""
+    out = []
+    if s.get("text"):
+        out.append(f'<p>{E(s["text"])}</p>')
+    if s.get("list"):
+        out.append('<ul class="bullets">' + "".join(f'<li>{E(x)}</li>' for x in s["list"]) + '</ul>')
+    for c in s.get("code", []):
+        if c.get("caption"):
+            out.append(f'<p class="caption">{E(c["caption"])}</p>')
+        out.append(f'<div class="codeblock"><pre>{E(c["code"])}</pre>'
+                   f'<button class="copy" type="button">Copiar</button></div>')
+    return "".join(out)
+
+
 def render_item(it, n):
     cls = "item reveal draft" if it.get("draft") else "item reveal"
     out = [f'<article class="{cls}"><div class="item-head"><span class="num">{n:02d}</span>'
@@ -91,13 +129,16 @@ def render_item(it, n):
     if it.get("url"):
         out.append(f'<a class="visit" href="{E(it["url"])}" target="_blank" rel="noopener">'
                    f'<span>{E(domain(it["url"]))}</span>{ARROW}</a>')
-    out.append('</div><div class="item-body">')
+    out.append('</div>')
+    if it.get("chips"):
+        out.append('<ul class="chips">' + "".join(f'<li>{E(c)}</li>' for c in it["chips"]) + '</ul>')
+    out.append('<div class="item-body">')
     for s in it.get("sections", []):
+        body = render_section_body(s)
         if s.get("warn"):
-            out.append(f'<div class="sec warn">{WARN_ICON}<div><b>{E(s["label"])}</b>'
-                       f'<p>{E(s["text"])}</p></div></div>')
+            out.append(f'<div class="sec warn">{WARN_ICON}<div><b>{E(s["label"])}</b>{body}</div></div>')
         else:
-            out.append(f'<div class="sec"><b>{E(s["label"])}</b><p>{E(s["text"])}</p></div>')
+            out.append(f'<div class="sec"><b>{E(s["label"])}</b>{body}</div>')
     if it.get("prompt"):
         out.append(f'<div class="prompt"><div class="prompt-bar"><span>Prompt</span>'
                    f'<button class="copy" type="button">Copiar</button></div>'
@@ -120,7 +161,7 @@ JS = """<script>
     }, {rootMargin: "0px 0px -8% 0px"});
     els.forEach(function(e){ if (!e.classList.contains("in")) io.observe(e); });
   }
-  document.querySelectorAll(".item, .tile").forEach(function(c){
+  document.querySelectorAll(".item, .tile, .link-row").forEach(function(c){
     c.addEventListener("pointermove", function(ev){
       var r = c.getBoundingClientRect();
       c.style.setProperty("--mx", (ev.clientX - r.left) + "px");
@@ -129,7 +170,7 @@ JS = """<script>
   });
   document.querySelectorAll(".copy").forEach(function(b){
     b.addEventListener("click", function(){
-      var t = b.closest(".prompt").querySelector("pre").innerText;
+      var t = b.closest(".prompt, .codeblock").querySelector("pre").innerText;
       navigator.clipboard.writeText(t).then(function(){
         b.textContent = "Copiado ✓"; b.classList.add("ok");
         setTimeout(function(){ b.textContent = "Copiar"; b.classList.remove("ok"); }, 1600);
@@ -175,7 +216,7 @@ for path in sorted(glob.glob(os.path.join(ROOT, "content", "*.json"))):
 
     h = [head(f'{data["title"]} · {LIB} {HANDLE}', data["summary"], accent, "../assets/style.css")]
     h.append('<div class="progress" aria-hidden="true"><span></span></div>')
-    h.append(nav("../", False))
+    h.append(nav("../"))
     h.append('<main class="wrap">')
     h.append(f'<section class="hero reveal"><span class="code">#{E(data["code"])}</span>'
              f'<h1>{E(data["title"])}</h1><p class="lead">{E(data["intro"])}</p>'
@@ -199,7 +240,7 @@ for path in sorted(glob.glob(os.path.join(ROOT, "content", "*.json"))):
 
 pages.sort(key=lambda p: p["date"], reverse=True)
 h = [head(site["site_title"], site["site_intro"], "#FF7A1A", "assets/style.css")]
-h.append(nav("./", True))
+h.append(nav("./", "lib"))
 h.append('<main class="wrap">')
 h.append(f'<section class="hero reveal"><span class="code">{E(HANDLE)}</span>'
          f'<h1>{E(LIB)}</h1><p class="lead">{E(site["site_intro"])}</p>'
@@ -220,5 +261,26 @@ h.append('</div><p class="empty" hidden>Nada encontrado. Confira o código que v
 h.append(f'{FOOT}</main>{JS}</body></html>')
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write("".join(h))
 print("  ok: /  (index)")
+
+# Página de links (estilo "link na bio")
+h = [head(f'Links · {HANDLE}', site.get("links_intro", ""), "#FF7A1A", "../assets/style.css")]
+h.append(nav("../", "links"))
+h.append('<main class="wrap links-page">')
+h.append(f'<section class="hero reveal"><span class="avatar"><span class="dot"></span></span>'
+         f'<h1>{E(HANDLE)}</h1><p class="lead">{E(site.get("links_intro", ""))}</p></section>')
+h.append('<div class="links">')
+all_links = [{"label": LIB, "sub": f'{len(pages)} materiais dos posts', "url": "../", "icon": "library", "internal": True}]
+all_links += site.get("links", [])
+for l in all_links:
+    ext = '' if l.get("internal") else ' target="_blank" rel="noopener"'
+    sub = f'<small>{E(l["sub"])}</small>' if l.get("sub") else ''
+    h.append(f'<a class="link-row reveal" href="{E(l["url"])}"{ext}>'
+             f'<span class="link-ico">{icon(l.get("icon", "link"))}</span>'
+             f'<span class="link-txt"><b>{E(l["label"])}</b>{sub}</span>'
+             f'<span class="link-go">{ARROW}</span></a>')
+h.append(f'</div>{FOOT}</main>{JS}</body></html>')
+os.makedirs(os.path.join(ROOT, "links"), exist_ok=True)
+open(os.path.join(ROOT, "links", "index.html"), "w", encoding="utf-8").write("".join(h))
+print("  ok: /links/")
 
 open(os.path.join(ROOT, "robots.txt"), "w").write("User-agent: *\nDisallow: /\n" if site.get("noindex") else "User-agent: *\nAllow: /\n")
