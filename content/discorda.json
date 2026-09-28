@@ -1,0 +1,61 @@
+{
+  "code": "DISCORDA",
+  "title": "Prompts para a IA te contrariar",
+  "summary": "Cinco prompts para tirar a IA do modo \"ótima ideia!\" antes de você decidir.",
+  "date": "2026-09-27",
+  "accent": "#D97757",
+  "intro": "A IA tende a concordar com você. Estes prompts mudam o papel dela: em vez de aprovar, ela procura o que pode dar errado. Troque o que está entre [colchetes] e cole no chat. Onde faz sentido, o prompt inclui uma trava contra o exagero: se não houver falha real, ela deve dizer isso, em vez de inventar problema para parecer crítica.",
+  "items": [
+    {
+      "name": "1. Crítico primeiro",
+      "sections": [
+        {
+          "label": "Quando usar",
+          "text": "Antes de fechar qualquer plano, proposta ou decisão."
+        }
+      ],
+      "prompt": "Vou te descrever um plano. Não elogie e não suavize. Liste as 5 maiores fraquezas, da mais grave para a menos grave, e para cada uma diga o que aconteceria se ela se confirmasse. Se alguma fraqueza for pequena, diga que é pequena. Se o plano for realmente sólido, diga isso e aponte apenas o que ainda falta.\n\nPlano: [descreva aqui]"
+    },
+    {
+      "name": "2. Pré-mortem",
+      "sections": [
+        {
+          "label": "Quando usar",
+          "text": "Para lançamentos, investimentos e mudanças grandes."
+        }
+      ],
+      "prompt": "Imagine que já se passaram 12 meses e este projeto fracassou. Escreva a causa mais provável do fracasso, mais duas causas plausíveis, e o sinal de alerta que eu deveria ter percebido em cada caso. Baseie-se só no que descrevi; onde faltar informação, pergunte em vez de supor.\n\nProjeto: [descreva aqui]"
+    },
+    {
+      "name": "3. O outro lado",
+      "sections": [
+        {
+          "label": "Quando usar",
+          "text": "Quando você já está convencido e quer testar a convicção."
+        }
+      ],
+      "prompt": "Minha posição é: [sua posição]. Apresente a melhor versão possível do argumento contrário, como o defenderia alguém inteligente que discorda de mim. Depois diga qual parte da minha posição resiste a esse argumento e qual parte não resiste."
+    },
+    {
+      "name": "4. Nota honesta",
+      "sections": [
+        {
+          "label": "Quando usar",
+          "text": "Para textos, propostas, currículos, ofertas e preços."
+        }
+      ],
+      "prompt": "Avalie o material abaixo de 0 a 10, com justificativa. Diga o que teria que mudar para a nota subir 2 pontos. Não arredonde para cima por gentileza: use a nota que você realmente daria a um desconhecido.\n\nMaterial: [cole aqui]"
+    },
+    {
+      "name": "5. O que estou ignorando",
+      "sections": [
+        {
+          "label": "Quando usar",
+          "text": "Quando a decisão parece óbvia demais."
+        }
+      ],
+      "prompt": "Estou prestes a decidir [decisão]. Quais premissas estou assumindo sem perceber? Quais informações mudariam a sua recomendação e que você não tem? Faça as perguntas que um consultor cético faria antes de aprovar."
+    }
+  ],
+  "closing": "Um cuidado: mesmo assim, a IA pode errar para os dois lados. Use a crítica dela como ponto de partida para checar, não como sentença."
+}

@@ -1,0 +1,130 @@
+{
+  "code": "4TQZC",
+  "title": "Os sites testados",
+  "summary": "Links, o que cada um pede em troca e os cuidados que valem a pena.",
+  "date": "2026-09-27",
+  "accent": "#6B8F71",
+  "verified": "27/09/2026",
+  "intro": "Testei todos no dia em que fiz o post. Abaixo estão os links, o que cada um pede de você e o cuidado que vale ter — dois deles têm um risco real se usados do jeito errado.",
+  "items": [
+    {
+      "name": "Quackr",
+      "url": "https://quackr.io",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Dá um número de telefone temporário para você receber o SMS de verificação sem entregar o seu."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "Nada nos números gratuitos, e não precisa de cadastro. Números privados e exclusivos são pagos."
+        },
+        {
+          "label": "Cuidado",
+          "text": "Os números gratuitos são compartilhados, então outras pessoas podem ver os SMS que chegam. Nunca use para banco, e-mail principal ou recuperação de conta. Serve para cadastro descartável e teste de app.",
+          "warn": true
+        }
+      ]
+    },
+    {
+      "name": "PhoText",
+      "url": "https://photext.ai",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Edita o texto dentro de qualquer imagem ou print: você clica no texto, digita o novo e ele refaz o fundo."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "As funções básicas são gratuitas, com uma cota limitada. Uso avançado ou ilimitado pede assinatura ou compra."
+        },
+        {
+          "label": "Nota",
+          "text": "photext.shop redireciona para photext.ai. Use para ajustar material seu; não altere documentos de terceiros para enganar alguém."
+        }
+      ]
+    },
+    {
+      "name": "SoBrief",
+      "url": "https://sobrief.com",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Resume livros em cerca de 10 minutos, com opção de ouvir o resumo narrado."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "Ler os resumos é gratuito e sem cadastro. A narração em áudio é paga, por assinatura."
+        }
+      ]
+    },
+    {
+      "name": "Privnote",
+      "url": "https://privnote.com",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Você escreve a mensagem, ele gera um link único e, depois que a pessoa lê, a nota se destrói."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "Nada, e não precisa de cadastro."
+        },
+        {
+          "label": "Cuidado",
+          "text": "Existem clones falsos do Privnote, usados em golpes para roubar carteira de criptomoeda. Confira que o endereço é exatamente privnote.com antes de colar qualquer coisa sensível. E lembre que quem lê ainda pode tirar print ou copiar.",
+          "warn": true
+        }
+      ]
+    },
+    {
+      "name": "FakeUpdate",
+      "url": "https://fakeupdate.net",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Mostra uma tela falsa de atualização (Windows, Mac e outras) em tela cheia. F11 ativa a tela cheia."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "Nada."
+        },
+        {
+          "label": "Cuidado",
+          "text": "Use só como brincadeira visual. Nunca peça para alguém apertar Win+R e colar um comando para \"finalizar a atualização\": essa é exatamente a técnica de golpes reais (ClickFix) que instalam malware.",
+          "warn": true
+        }
+      ]
+    },
+    {
+      "name": "Perchance — AI Photo Generator",
+      "url": "https://perchance.org/ai-photo-generator",
+      "sections": [
+        {
+          "label": "O que faz",
+          "text": "Gera imagens com IA a partir de uma descrição em texto."
+        },
+        {
+          "label": "O que pede em troca",
+          "text": "Nada: é gratuito, sem login, e se sustenta com anúncios."
+        },
+        {
+          "label": "Cuidado",
+          "text": "A plataforma é aberta e qualquer pessoa cria geradores nela; alguns feitos pela comunidade têm conteúdo adulto. Fique nesta página e evite abrir geradores aleatórios.",
+          "warn": true
+        }
+      ]
+    },
+    {
+      "name": "Koha.wtf",
+      "url": "https://koha.wtf",
+      "draft": true,
+      "sections": [
+        {
+          "label": "Pendente",
+          "text": "O endereço abriu o portfólio pessoal de outra pessoa, não um gerador de sites aleatórios. Confirmar o link correto antes de publicar."
+        }
+      ]
+    }
+  ]
+}
