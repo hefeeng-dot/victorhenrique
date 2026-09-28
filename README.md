@@ -7,7 +7,7 @@ Sem dependências: o `build.py` usa só o Python 3 padrão.
 ```
 site.json            configurações (handle, textos do index, noindex)
 content/*.json       uma isca por arquivo (o nome do arquivo = código em minúsculas)
-assets/style.css     visual (Paleta Claude: bege + grade + Montserrat)
+assets/style.css     visual escuro premium (Inter + cor de destaque de cada post)
 build.py             gera index.html e <codigo>/index.html
 vercel.json          URLs limpas + noindex
 ```

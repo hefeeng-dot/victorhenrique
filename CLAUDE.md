@@ -2,6 +2,8 @@
 
 Site estático hospedado na Vercel. Cada post do Instagram/TikTok termina com "Comente CÓDIGO que eu te mando no direct", e cada código tem uma página aqui (`/codigo/`). O `index.html` cataloga todas.
 
+**Nome público: Biblioteca.** Para quem acessa o site, nunca use a palavra "isca": o site é a "Biblioteca" e cada página é um material/post. "Isca" fica só no uso interno (arquivos, commits, esta documentação). O nome público vem de `library_name` em `site.json`.
+
 Repositório: github.com/hefeeng-dot/victorhenrique (**público**). Responda sempre em português do Brasil.
 
 ## Regras que nunca se quebram
@@ -16,7 +18,7 @@ Repositório: github.com/hefeeng-dot/victorhenrique (**público**). Responda sem
 ```
 site.json          handle, textos do index, noindex
 content/*.json     uma isca por arquivo (nome do arquivo = código em minúsculas)
-assets/style.css   visual: fundo bege com grade, Montserrat, cor de destaque por post
+assets/style.css   visual escuro premium: fundo quase preto, brilho e detalhes na cor de destaque do post, Inter + JetBrains Mono
 build.py           gera index.html e <codigo>/index.html (só Python 3 padrão)
 vercel.json        URLs limpas + noindex
 ```
