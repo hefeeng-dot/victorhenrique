@@ -1,0 +1,31 @@
+# Vai em .github/workflows/build.yml
+# Gera o site sozinho quando um material entra pelo navegador (github.com → content → Add file → Upload files).
+# Se você publicou pelo publicar.py, os HTML já vêm prontos e este passo não muda nada.
+name: build
+
+on:
+  push:
+    branches: [main]
+    paths: ["content/**", "site.json", "assets/**", "build.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python build.py
+      - name: Commit dos arquivos gerados
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nada para gerar." && exit 0
+          git commit -m "build: páginas geradas"
+          git push
