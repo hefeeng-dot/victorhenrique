@@ -1,0 +1,154 @@
+{
+  "code": "ACHADOS",
+  "title": "Kit 6 repositórios: links, tutorial e prompt de cada um",
+  "summary": "Os 6 projetos do post com link direto, nível de dificuldade, passo a passo de instalação conferido no README oficial e o primeiro prompt para testar cada um.",
+  "date": "2026-09-28",
+  "accent": "#5B7C99",
+  "verified": "28/09/2026",
+  "intro": "O post mostrou o que cada projeto faz. Aqui está o que você precisa para usar: o link, para quem serve, o nível de dificuldade, o passo a passo de instalação (copiado do README oficial no dia do post) e o primeiro prompt para testar. Se você nunca usou terminal, comece pelo Agency Agents (tem app) ou pelo AdGuard Home (tem painel no navegador).",
+  "items": [
+    {
+      "name": "Links rápidos",
+      "sections": [
+        {"label": "Os 6 links", "list": [
+          "Graft (mapa do código para o agente): github.com/trailhq/Graft",
+          "OpenMontage (estúdio de vídeo com IA): github.com/calesthio/OpenMontage",
+          "codebase-memory-mcp (memória do código em grafo): github.com/DeusData/codebase-memory-mcp",
+          "Agency Agents (agentes especialistas prontos): github.com/msitarzewski/agency-agents · app: agencyagents.app",
+          "AdGuard Home (bloqueio de anúncio na casa toda): github.com/AdguardTeam/AdGuardHome",
+          "hyperresearch (pesquisa profunda com fontes): github.com/jordan-gibbs/hyperresearch"
+        ]},
+        {"label": "Por onde começar", "list": [
+          "Nunca usou terminal: Agency Agents (app) ou AdGuard Home.",
+          "Já usa Claude Code ou Codex: hyperresearch e Graft.",
+          "Quer criar vídeo: OpenMontage.",
+          "Trabalha com projeto de código grande: codebase-memory-mcp."
+        ]}
+      ]
+    },
+    {
+      "name": "Agency Agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "chips": ["★ 155 mil", "Fácil: tem app"],
+      "sections": [
+        {"label": "O que é", "text": "Uma coleção de agentes especialistas prontos (marketing, revisão, produto, desenvolvimento e muitos outros), cada um com personalidade, processo e entregas definidas. O app instala os agentes no Claude Code, Cursor, Codex, Gemini CLI e outros com um clique e mantém tudo atualizado."},
+        {"label": "Casos de uso", "list": [
+          "Ter um revisor de textos ou de posts com um jeito de trabalhar definido.",
+          "Montar um \"time\" de especialistas para um projeto pessoal.",
+          "Usar os arquivos como modelo para escrever os seus próprios agentes."
+        ]},
+        {"label": "Como começar (sem terminal)", "list": [
+          "Baixe o app em agencyagents.app (Mac, Windows e Linux).",
+          "Escolha os agentes que fazem sentido para você e clique para instalar na ferramenta que você usa.",
+          "Abra uma conversa nova e peça para ativar o agente pelo nome."
+        ]},
+        {"label": "Com terminal (Claude Code)", "code": [
+          {"caption": "Dentro da pasta do projeto clonado:", "code": "./scripts/install.sh --tool claude-code"}
+        ]},
+        {"label": "Cuidado", "text": "São prompts bem feitos, não mágica. Escolha dois ou três que resolvem algo seu, em vez de instalar todos.", "warn": true}
+      ],
+      "prompt": "Ative o agente [nome do agente] e revise o texto abaixo como esse especialista faria. Me devolva: 1) os 3 maiores problemas, 2) a versão corrigida, 3) uma nota de 0 a 10 e o que falta para subir 2 pontos.\n\nTexto:\n[cole aqui]"
+    },
+    {
+      "name": "AdGuard Home",
+      "url": "https://github.com/AdguardTeam/AdGuardHome",
+      "chips": ["★ 37,1 mil", "Médio: painel no navegador"],
+      "sections": [
+        {"label": "O que é", "text": "Um servidor de DNS que você mesmo hospeda e que bloqueia anúncios e rastreadores para todos os aparelhos da rede da casa, sem instalar nada em cada um."},
+        {"label": "Casos de uso", "list": [
+          "Menos anúncio em TV, celular e computador de toda a família.",
+          "Ver quais aparelhos acessam o quê e bloquear sites específicos."
+        ]},
+        {"label": "Antes de começar", "list": [
+          "Um aparelho que fique ligado o tempo todo: um Raspberry Pi, um PC antigo ou um servidor em casa.",
+          "Acesso ao painel do seu roteador, para trocar o DNS."
+        ]},
+        {"label": "Instalar (Linux ou Mac)", "code": [
+          {"code": "curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v"}
+        ]},
+        {"label": "Depois de instalar", "list": [
+          "Abra no navegador o endereço que o instalador mostra no final e siga o assistente (crie usuário e senha).",
+          "No roteador, troque o DNS para o endereço IP do aparelho onde o AdGuard Home está rodando.",
+          "Guia oficial com prints, inclusive para outros sistemas: adguard-dns.io/kb/adguard-home/getting-started"
+        ]},
+        {"label": "Cuidado", "text": "Se esse aparelho desligar, a internet da casa pode parar até você voltar o DNS do roteador para o padrão. Anote o DNS original antes de trocar.", "warn": true}
+      ]
+    },
+    {
+      "name": "hyperresearch",
+      "url": "https://github.com/jordan-gibbs/hyperresearch",
+      "chips": ["★ 3,7 mil", "Licença MIT", "Médio: precisa de Claude Code ou Codex"],
+      "sections": [
+        {"label": "O que é", "text": "Transforma o Claude Code ou o Codex num agente de pesquisa: busca na web, lê, sintetiza e guarda tudo numa wiki local pesquisável, que cresce a cada pesquisa."},
+        {"label": "Casos de uso", "list": [
+          "Comparar produtos, ferramentas ou fornecedores com as fontes guardadas.",
+          "Montar uma base de conhecimento sobre um tema e consultar depois."
+        ]},
+        {"label": "Antes de começar", "list": ["Python 3.11 a 3.14.", "Claude Code ou OpenAI Codex instalado."]},
+        {"label": "Instalar no Claude Code", "code": [
+          {"caption": "Dentro da pasta do seu projeto:", "code": "pip install hyperresearch\nhyperresearch install"},
+          {"caption": "Depois, no Claude Code:", "code": "/hyperresearch <sua pergunta>"}
+        ]},
+        {"label": "Cuidado", "text": "É o menor e mais novo da lista. Pesquisa longa consome bastante do seu plano ou dos seus créditos.", "warn": true}
+      ],
+      "prompt": "/hyperresearch Quais são as melhores opções de [ferramenta/produto] para [seu caso] em 2026? Compare preço, prós, contras e para quem cada uma serve. Termine com uma recomendação e liste as fontes."
+    },
+    {
+      "name": "OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "chips": ["★ 61,7 mil", "AGPL-3.0", "Avançado"],
+      "sections": [
+        {"label": "O que é", "text": "Um sistema de produção de vídeo comandado pelo seu agente de código: pesquisa, roteiro, narração, imagens, música, legendas e render, tudo por conversa. Tem caminho gratuito com imagens e vídeos de bancos livres e narração offline."},
+        {"label": "Casos de uso", "list": [
+          "Vídeos explicativos para redes sociais sem abrir editor.",
+          "Montagens com imagens reais de bancos gratuitos, com música e legenda."
+        ]},
+        {"label": "Antes de começar", "list": ["Python 3.10 ou mais novo.", "FFmpeg.", "Node.js 18 ou mais novo.", "Um agente de código (Claude Code, Cursor, Codex e outros)."]},
+        {"label": "Instalar", "code": [
+          {"code": "git clone https://github.com/calesthio/OpenMontage.git\ncd OpenMontage\nmake setup"},
+          {"caption": "Para ver vídeos de demonstração sem nenhuma chave de API:", "code": "make demo"}
+        ]},
+        {"label": "Custos", "text": "Segundo o README, o caminho com imagens de bancos gratuitos custa zero; com um provedor de imagem ou vídeo configurado, cerca de US$ 0,15 a 1,50 por vídeo; com tudo ligado, US$ 1 a 3."},
+        {"label": "Cuidado", "text": "Os provedores de imagem, vídeo e voz pagos cobram na sua conta de cada um. A licença AGPL-3.0 tem regras fortes se você usar o código dentro de um produto seu.", "warn": true}
+      ],
+      "prompt": "Faça um vídeo vertical de 45 segundos, em português do Brasil, explicando [tema] para iniciantes. Use só imagens e vídeos de bancos gratuitos, música livre, narração com voz offline e legendas palavra por palavra. Antes de renderizar, me mostre o roteiro para eu aprovar."
+    },
+    {
+      "name": "Graft",
+      "url": "https://github.com/trailhq/Graft",
+      "chips": ["★ 9,3 mil", "Médio: precisa de agente de código"],
+      "sections": [
+        {"label": "O que é", "text": "Monta um mapa (grafo) do seu código e entrega ao agente de programação, para ele parar de abrir arquivo por arquivo procurando onde está cada coisa. Funciona com Claude Code, Cursor, Codex e Gemini."},
+        {"label": "Números", "text": "No teste publicado pelo próprio projeto, comparado ao Claude Code sem o Graft: 46% menos chamadas de ferramenta, 42% menos tokens e 60% menos tempo."},
+        {"label": "Instalar", "code": [
+          {"caption": "Precisa do Node.js. Instale uma vez:", "code": "npm install -g @nanonets/graft"},
+          {"caption": "Na pasta do projeto (use --dry-run antes para ver o que ele vai alterar):", "code": "graft init --dry-run\ngraft init"}
+        ]},
+        {"label": "Cuidado", "text": "Os números são do próprio projeto. Em projeto pequeno a diferença tende a ser pequena. O pacote de instalação se chama @nanonets/graft, mesmo o repositório estando em trailhq.", "warn": true}
+      ],
+      "prompt": "Usando o mapa do Graft, me explique a arquitetura deste projeto em até 10 linhas e aponte os 3 arquivos mais importantes para eu entender primeiro."
+    },
+    {
+      "name": "codebase-memory-mcp",
+      "url": "https://github.com/DeusData/codebase-memory-mcp",
+      "chips": ["★ 45,3 mil", "Avançado: MCP"],
+      "sections": [
+        {"label": "O que é", "text": "Um servidor MCP que indexa o repositório inteiro num grafo de funções, classes, chamadas e rotas. Responde perguntas de estrutura em menos de 1 milissegundo. É um executável só, sem runtime de linguagem e sem chave de API."},
+        {"label": "Instalar (Mac ou Linux)", "code": [
+          {"code": "curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash"}
+        ]},
+        {"label": "Instalar (Windows, PowerShell)", "code": [
+          {"code": "Invoke-WebRequest -Uri https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.ps1 -OutFile install.ps1\nUnblock-File .\\install.ps1\n.\\install.ps1"}
+        ]},
+        {"label": "Depois de instalar", "list": [
+          "Reinicie o seu agente de código.",
+          "No Claude Code, confira com /mcp: deve aparecer codebase-memory-mcp.",
+          "Peça: \"Index this project\"."
+        ]},
+        {"label": "Cuidado", "text": "Só faz diferença para quem já usa agente de código com MCP em projeto grande. Para desinstalar: codebase-memory-mcp uninstall.", "warn": true}
+      ],
+      "prompt": "Usando o codebase-memory, me diga: quem chama a função [nome]? O que pode quebrar se eu mudar a assinatura dela? Liste os arquivos afetados."
+    }
+  ],
+  "closing": "Escolha um só para testar esta semana. O melhor repositório é o que resolve um problema que você já tem."
+}
