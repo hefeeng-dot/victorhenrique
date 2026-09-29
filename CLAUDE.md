@@ -63,6 +63,12 @@ A Vercel **não roda build**: ela publica os arquivos como estão. Por isso os H
 - `verified` é a data em que os links foram conferidos. Mostre-a só se realmente conferiu.
 - Cores de destaque usadas: terracota `#D97757`, sage `#6B8F71`, slate `#5B7C99`, heather `#A66B7A`. Varie entre os posts.
 
+## Quando pode publicar
+
+O material de um post só sobe no site quando a propriedade **Capa pronta** dele, na base **Conteúdo** do Notion, estiver marcada. Não depende do Status (pode publicar com Status "Revisão") nem de Pendências. Antes de publicar um código, confira essa propriedade na página do post; se estiver `NO`, avise o Victor e não publique.
+
+O JSON do material fica escrito direto na seção 🎁 Material da página (bloco de código), não como arquivo anexado — anexos genéricos não são legíveis por aqui. Se algum post ainda tiver o JSON como arquivo anexado em vez de bloco de código, peça para o Victor abrir o anexo e colar o conteúdo como bloco de código na página.
+
 ## Como adicionar uma isca nova
 
 Quando o Victor colar um JSON de isca (ou pedir para criar uma):
