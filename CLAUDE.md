@@ -83,7 +83,9 @@ Quando o Victor colar um JSON de isca (ou pedir para criar uma):
 
 ## Estado atual
 
-- Páginas: `/4tqzc/` (sites testados) e `/discorda/` (5 prompts para a IA discordar).
+- Páginas no ar: `/4tqzc/` (sites testados), `/discorda/` (5 prompts para a IA discordar), `/garimpo/`, `/achados/`, `/conta/`, `/decisao/`.
+- Gatilho de publicação: a propriedade **Capa pronta** marcada na base Conteúdo do Notion.
+- Site: https://victorhenrique-smoky.vercel.app (@victor.henriquef).
 - **Pendência:** em `content/4tqzc.json` o item **Koha.wtf** está como `draft`. O endereço abriu o portfólio pessoal de outra pessoa, não o gerador de sites aleatórios do roteiro original. Só tire o `draft` depois que o Victor confirmar o link correto. Nesse momento o título pode voltar a "Os 7 sites testados".
 - `noindex` está ligado (não aparece no Google). Isso **não é proteção de acesso**: quem tiver o link abre.
 
