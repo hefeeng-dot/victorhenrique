@@ -8,7 +8,7 @@ Uso:
 Para criar uma página nova: copie um arquivo de content/, troque o conteúdo e rode o build.
 Internamente os arquivos continuam sendo "iscas"; para o público o nome é "Biblioteca".
 """
-import json, glob, os, sys, html
+import json, glob, os, re, sys, html
 from datetime import datetime
 from urllib.parse import urlparse
 
@@ -16,6 +16,51 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 INCLUDE_DRAFTS = "--drafts" in sys.argv
 E = html.escape
 DEFAULT_ACCENT = "#6B8F71"
+
+# ---------------------------------------------------------------------------
+# Links e vídeos dentro do texto do material
+# ---------------------------------------------------------------------------
+# O material pode trazer o endereço escrito no meio da frase; aqui ele vira
+# link clicável. Só endereços EXPLÍCITOS (https:// ou www.) — assim nada de
+# "PyTorch." ou "3Blue1Brown" virar link por engano.
+URL_RX = re.compile(r"((?:https?://|www\.)[^\s<>\"')]+)", re.I)
+
+
+def youtube_id(url):
+    """ID do vídeo, se for YouTube (watch, youtu.be, embed, shorts)."""
+    if not url:
+        return None
+    m = re.search(r"(?:youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/)|youtu\.be/)([\w-]{6,})",
+                  url.strip())
+    return m.group(1) if m else None
+
+
+def linkify(txt):
+    """Escapa o texto e transforma endereços em links clicáveis."""
+    if not txt:
+        return ""
+    out, pos = [], 0
+    for m in URL_RX.finditer(txt):
+        url = m.group(1).rstrip(".,;:)")
+        vid = youtube_id(url)
+        rotulo = "▶ YouTube" if vid else urlparse(url if "://" in url else "https://" + url).netloc
+        out.append(E(txt[pos:m.start()]))
+        out.append('<a class="lnk" href="%s" target="_blank" rel="noopener">%s</a>'
+                   % (E(url if "://" in url else "https://" + url), E(rotulo)))
+        pos = m.start() + len(m.group(1))
+    out.append(E(txt[pos:]))
+    return "".join(out)
+
+
+def embed_video(url, titulo="Vídeo"):
+    """Player do YouTube incorporado (só carrega quando a pessoa rola até ele)."""
+    vid = youtube_id(url)
+    if not vid:
+        return ""
+    return ('<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%s" '
+            'title="%s" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; '
+            'gyroscope; picture-in-picture" allowfullscreen></iframe></div>' % (vid, E(titulo)))
+
 
 site = json.load(open(os.path.join(ROOT, "site.json"), encoding="utf-8"))
 HANDLE = site["handle"]
@@ -144,9 +189,11 @@ def section_role(s):
 def text_and_list(s, list_cls="bullets"):
     out = []
     if s.get("text"):
-        out.append(f'<p>{E(s["text"])}</p>')
+        out.append(f'<p>{linkify(s["text"])}</p>')
     if s.get("list"):
-        out.append(f'<ul class="{list_cls}">' + "".join(f'<li>{E(x)}</li>' for x in s["list"]) + '</ul>')
+        out.append(f'<ul class="{list_cls}">' + "".join(f'<li>{linkify(x)}</li>' for x in s["list"]) + '</ul>')
+    if s.get("video"):
+        out.append(embed_video(s["video"], s.get("label", "Vídeo")))
     return "".join(out)
 
 
@@ -166,7 +213,7 @@ def render_info(s):
 
 def render_uses(s, notes):
     if s.get("list"):
-        cards = "".join(f'<li>{ICON_SPARK}<span>{E(x)}</span></li>' for x in s["list"])
+        cards = "".join(f'<li>{ICON_SPARK}<span>{linkify(x)}</span></li>' for x in s["list"])
         body = (f'<p>{E(s["text"])}</p>' if s.get("text") else "") + f'<ul class="use-grid">{cards}</ul>'
     else:
         body = f'<p class="use-one">{ICON_SPARK}<span>{E(s.get("text", ""))}</span></p>'
@@ -198,10 +245,12 @@ def render_item(it, n):
     cls = "item reveal draft" if it.get("draft") else "item reveal"
     out = [f'<article class="{cls}" id="{E(item_anchor(it))}"><div class="item-head"><span class="num">{n:02d}</span>'
            f'<h2>{E(it["name"])}</h2>']
-    if it.get("url"):
+    if it.get("url") and not youtube_id(it.get("url")):
         out.append(f'<a class="visit" href="{E(it["url"])}" target="_blank" rel="noopener">'
                    f'<span>{E(domain(it["url"]))}</span>{ARROW}</a>')
     out.append('</div>')
+    if it.get("video") or youtube_id(it.get("url")):
+        out.append(embed_video(it.get("video") or it["url"], it["name"]))
     if it.get("chips"):
         out.append('<ul class="chips">' + "".join(f'<li>{E(c)}</li>' for c in it["chips"]) + '</ul>')
 
