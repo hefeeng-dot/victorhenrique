@@ -10,115 +10,180 @@
     {
       "name": "Links rápidos",
       "sections": [
-        {"label": "Onde clicar", "list": [
-          "Jev, site oficial e lista de espera: typesafe.ai",
-          "Documentação do Jev: docs.typesafe.ai",
-          "Anúncio oficial com os números: typesafe.ai/blog/introducing-system-one-models-and-jev",
-          "Análise independente (Simon Willison, em inglês): simonwillison.net/2026/Sep/21/jev"
-        ]}
+        {
+          "label": "Onde clicar",
+          "list": [
+            "Jev, site oficial e lista de espera: https://typesafe.ai",
+            "Documentação do Jev: https://docs.typesafe.ai",
+            "Anúncio oficial com os números: https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+            "Análise independente (Simon Willison, em inglês): https://simonwillison.net/2026/Sep/21/jev/"
+          ]
+        }
       ]
     },
     {
       "name": "O prompt-base: decisão sem textão",
-      "chips": ["Funciona em qualquer IA", "Copie e adapte"],
+      "chips": [
+        "Funciona em qualquer IA",
+        "Copie e adapte"
+      ],
       "sections": [
-        {"label": "O que faz", "text": "Transforma qualquer chat de IA num \"decisor\": você dá as opções, ela responde só com a escolha e o quanto tem certeza, em uma linha. É a base de todos os outros prompts deste kit."},
-        {"label": "Como usar", "list": [
-          "Troque as opções entre colchetes pelas suas (de 2 a 6 funciona melhor).",
-          "Cole o prompt uma vez e depois mande só os itens, um por mensagem ou vários de uma vez.",
-          "Se a confiança vier abaixo de 60%, decida você."
-        ]}
+        {
+          "label": "O que faz",
+          "text": "Transforma qualquer chat de IA num \"decisor\": você dá as opções, ela responde só com a escolha e o quanto tem certeza, em uma linha. É a base de todos os outros prompts deste kit."
+        },
+        {
+          "label": "Como usar",
+          "list": [
+            "Troque as opções entre colchetes pelas suas (de 2 a 6 funciona melhor).",
+            "Cole o prompt uma vez e depois mande só os itens, um por mensagem ou vários de uma vez.",
+            "Se a confiança vier abaixo de 60%, decida você."
+          ]
+        }
       ],
       "prompt": "A partir de agora você é um classificador. Para cada item que eu mandar, escolha UMA opção desta lista e nada fora dela:\n[opção 1] | [opção 2] | [opção 3]\n\nResponda só neste formato, uma linha por item, sem explicação:\nITEM -> OPÇÃO (confiança: X%)\n\nRegras:\n- A confiança é o quanto você tem certeza, de 0 a 100%.\n- Se nenhuma opção servir bem, escolha a mais próxima e use confiança abaixo de 50%.\n- Nunca invente uma opção nova.\n\nResponda \"Pronto\" e aguarde os itens."
     },
     {
       "name": "Prompt 1: triagem de mensagens de clientes",
       "sections": [
-        {"label": "Quando usar", "text": "WhatsApp, e-mail ou DM de loja, prestador de serviço ou autônomo. Cole várias mensagens de uma vez e saiba o que responder primeiro."}
+        {
+          "label": "Quando usar",
+          "text": "WhatsApp, e-mail ou DM de loja, prestador de serviço ou autônomo. Cole várias mensagens de uma vez e saiba o que responder primeiro."
+        }
       ],
       "prompt": "Classifique cada mensagem de cliente abaixo. Para cada uma, responda numa linha:\nNº -> TIPO | PRIORIDADE | RESPONDER HOJE? (confiança: X%)\n\nTIPO: pedido novo | entrega | pagamento | reclamação | dúvida | elogio\nPRIORIDADE: alta | média | baixa\nRESPONDER HOJE?: sim | não\n\nNo fim, liste só os números que são \"alta\" e \"sim\", na ordem em que devo responder. Sem outras explicações.\n\nMensagens:\n1. [cole aqui]\n2. [cole aqui]"
     },
     {
       "name": "Prompt 2: caixa de entrada zerada",
       "sections": [
-        {"label": "Quando usar", "text": "E-mails acumulados. Copie assunto e primeira linha de cada um e cole em lote."}
+        {
+          "label": "Quando usar",
+          "text": "E-mails acumulados. Copie assunto e primeira linha de cada um e cole em lote."
+        }
       ],
       "prompt": "Vou colar uma lista de e-mails (assunto + primeira linha). Para cada um, responda numa linha:\nNº -> AÇÃO (confiança: X%)\n\nAÇÃO: responder hoje | responder esta semana | só ler | arquivar | descadastrar\n\nDepois, escreva um rascunho curto (até 3 linhas) só para os que forem \"responder hoje\".\n\nE-mails:\n[cole aqui]"
     },
     {
       "name": "Prompt 3: lista de tarefas priorizada",
       "sections": [
-        {"label": "Quando usar", "text": "Quando a lista do dia está grande demais. Usa a matriz urgente × importante."}
+        {
+          "label": "Quando usar",
+          "text": "Quando a lista do dia está grande demais. Usa a matriz urgente × importante."
+        }
       ],
       "prompt": "Classifique cada tarefa abaixo em uma das opções:\nfazer agora | agendar | delegar | eliminar\n\nResponda numa linha por tarefa: TAREFA -> OPÇÃO (confiança: X%).\nSe a confiança for abaixo de 60%, faça UMA pergunta curta sobre a tarefa em vez de decidir.\nNo fim, me dê as 3 tarefas de \"fazer agora\" na ordem certa.\n\nMinhas tarefas:\n[cole aqui]"
     },
     {
       "name": "Prompt 4: gastos do cartão por categoria",
       "sections": [
-        {"label": "Quando usar", "text": "Fatura do cartão ou extrato: copie as linhas (data, descrição, valor) e cole."},
-        {"label": "Cuidado", "text": "Apague número de cartão, CPF e dados de conta antes de colar em qualquer IA.", "warn": true}
+        {
+          "label": "Quando usar",
+          "text": "Fatura do cartão ou extrato: copie as linhas (data, descrição, valor) e cole."
+        },
+        {
+          "label": "Cuidado",
+          "text": "Apague número de cartão, CPF e dados de conta antes de colar em qualquer IA.",
+          "warn": true
+        }
       ],
       "prompt": "Classifique cada gasto abaixo em uma categoria:\nmercado | restaurante e delivery | transporte | casa e contas | saúde | lazer | assinaturas | compras | outros\n\nResponda em tabela: DESCRIÇÃO | VALOR | CATEGORIA | CONFIANÇA.\nNo fim, some o total por categoria e aponte as 3 assinaturas ou gastos recorrentes que eu deveria revisar.\n\nGastos:\n[cole aqui]"
     },
     {
       "name": "Prompt 5: comentários e DMs do Instagram",
       "sections": [
-        {"label": "Quando usar", "text": "Para quem vende pelo Instagram ou recebe muitas mensagens: separe quem quer comprar de quem só está curioso."}
+        {
+          "label": "Quando usar",
+          "text": "Para quem vende pelo Instagram ou recebe muitas mensagens: separe quem quer comprar de quem só está curioso."
+        }
       ],
       "prompt": "Classifique cada comentário ou DM abaixo:\nquer comprar | pediu preço | dúvida sobre o produto | elogio | reclamação | spam\n\nResponda numa linha: Nº -> TIPO (confiança: X%).\nPara \"quer comprar\" e \"pediu preço\", escreva uma resposta curta e simpática de até 2 linhas, terminando com uma pergunta.\n\nMensagens:\n[cole aqui]"
     },
     {
       "name": "Tutorial: triagem em lote numa planilha",
-      "chips": ["Sem programação", "10 minutos"],
+      "chips": [
+        "Sem programação",
+        "10 minutos"
+      ],
       "sections": [
-        {"label": "O que você vai montar", "text": "Uma planilha em que você cola dezenas de itens, a IA classifica todos de uma vez e você revisa só os que ela ficou em dúvida."},
-        {"label": "Passo a passo", "list": [
-          "Crie uma planilha (Google Sheets ou Excel) com as colunas: Nº | Item | Decisão | Confiança | Revisado?",
-          "Cole os itens na coluna Item, um por linha, com número na coluna Nº.",
-          "Copie as colunas Nº e Item e cole no chat da IA junto com um dos prompts acima, pedindo: \"responda em tabela com as colunas Nº, Decisão e Confiança\".",
-          "Copie a tabela da resposta e cole de volta nas colunas Decisão e Confiança.",
-          "Filtre a coluna Confiança: tudo abaixo de 60% você revisa na mão e marca em Revisado?.",
-          "Na próxima vez, reaproveite a mesma planilha e o mesmo prompt."
-        ]},
-        {"label": "Dica", "text": "Mande de 20 a 50 itens por vez. Listas muito longas numa mensagem só aumentam a chance de a IA pular linha. Confira se o número de linhas que voltou é igual ao que você mandou."}
+        {
+          "label": "O que você vai montar",
+          "text": "Uma planilha em que você cola dezenas de itens, a IA classifica todos de uma vez e você revisa só os que ela ficou em dúvida."
+        },
+        {
+          "label": "Passo a passo",
+          "list": [
+            "Crie uma planilha (Google Sheets ou Excel) com as colunas: Nº | Item | Decisão | Confiança | Revisado?",
+            "Cole os itens na coluna Item, um por linha, com número na coluna Nº.",
+            "Copie as colunas Nº e Item e cole no chat da IA junto com um dos prompts acima, pedindo: \"responda em tabela com as colunas Nº, Decisão e Confiança\".",
+            "Copie a tabela da resposta e cole de volta nas colunas Decisão e Confiança.",
+            "Filtre a coluna Confiança: tudo abaixo de 60% você revisa na mão e marca em Revisado?.",
+            "Na próxima vez, reaproveite a mesma planilha e o mesmo prompt."
+          ]
+        },
+        {
+          "label": "Dica",
+          "text": "Mande de 20 a 50 itens por vez. Listas muito longas numa mensagem só aumentam a chance de a IA pular linha. Confira se o número de linhas que voltou é igual ao que você mandou."
+        }
       ]
     },
     {
       "name": "O teste de 100 decisões",
       "sections": [
-        {"label": "Quando usar", "text": "Antes de deixar qualquer IA decidir sozinha algo que importa. Vale para os prompts acima e para o Jev."},
-        {"label": "Passo a passo", "list": [
-          "Separe 100 casos reais que você já resolveu (mensagens, tarefas, gastos) e anote a resposta certa de cada um.",
-          "Rode os 100 no mesmo prompt e anote a decisão e a confiança que a IA deu.",
-          "Conte os acertos no total e por faixa: acima de 80%, entre 60% e 80%, abaixo de 60%.",
-          "Olhe com atenção os erros com confiança alta: são os que passariam sem ninguém ver.",
-          "Automatize só a faixa em que o acerto for aceitável para você. O resto continua passando por uma pessoa."
-        ]}
+        {
+          "label": "Quando usar",
+          "text": "Antes de deixar qualquer IA decidir sozinha algo que importa. Vale para os prompts acima e para o Jev."
+        },
+        {
+          "label": "Passo a passo",
+          "list": [
+            "Separe 100 casos reais que você já resolveu (mensagens, tarefas, gastos) e anote a resposta certa de cada um.",
+            "Rode os 100 no mesmo prompt e anote a decisão e a confiança que a IA deu.",
+            "Conte os acertos no total e por faixa: acima de 80%, entre 60% e 80%, abaixo de 60%.",
+            "Olhe com atenção os erros com confiança alta: são os que passariam sem ninguém ver.",
+            "Automatize só a faixa em que o acerto for aceitável para você. O resto continua passando por uma pessoa."
+          ]
+        }
       ]
     },
     {
       "name": "IF, IA de chat ou Jev: qual usar",
       "sections": [
-        {"label": "A regra de três linhas", "list": [
-          "Regra fixa (palavra-chave, valor, data): use uma regra simples ou uma fórmula. Não precisa de IA.",
-          "Resposta aberta (escrever, resumir, explicar): use uma IA de chat.",
-          "Decisão pequena, com opções limitadas e repetida muitas vezes: IA de chat com o prompt-base, ou um modelo de decisão como o Jev quando você tiver acesso."
-        ]}
+        {
+          "label": "A regra de três linhas",
+          "list": [
+            "Regra fixa (palavra-chave, valor, data): use uma regra simples ou uma fórmula. Não precisa de IA.",
+            "Resposta aberta (escrever, resumir, explicar): use uma IA de chat.",
+            "Decisão pequena, com opções limitadas e repetida muitas vezes: IA de chat com o prompt-base, ou um modelo de decisão como o Jev quando você tiver acesso."
+          ]
+        }
       ]
     },
     {
       "name": "Jev: os números oficiais e os limites",
       "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
-      "chips": ["TypeSafe AI", "Lista de espera"],
+      "chips": [
+        "TypeSafe AI",
+        "Lista de espera"
+      ],
       "sections": [
-        {"label": "O que a empresa divulga", "list": [
-          "Resposta em 70 a 500 milissegundos por chamada.",
-          "US$ 0,042 por milhão de tokens de entrada; a saída não é cobrada.",
-          "Até 255 opções por pergunta. Várias perguntas sobre o mesmo contexto na mesma chamada.",
-          "Três tipos de pergunta: sim ou não, escolha entre opções e nota numa escala."
-        ]},
-        {"label": "O que \"não alucina\" cobre", "text": "Ele nunca devolve uma opção fora da sua lista. Mas pode escolher a opção errada dentro da lista, com confiança alta."},
-        {"label": "Cuidado", "text": "Os testes de comparação foram feitos pela própria empresa e o preço é de lançamento. Análises independentes apontam que ele é fraco com números, datas e textos feitos para enganar. Por enquanto, só lê texto.", "warn": true}
+        {
+          "label": "O que a empresa divulga",
+          "list": [
+            "Resposta em 70 a 500 milissegundos por chamada.",
+            "US$ 0,042 por milhão de tokens de entrada; a saída não é cobrada.",
+            "Até 255 opções por pergunta. Várias perguntas sobre o mesmo contexto na mesma chamada.",
+            "Três tipos de pergunta: sim ou não, escolha entre opções e nota numa escala."
+          ]
+        },
+        {
+          "label": "O que \"não alucina\" cobre",
+          "text": "Ele nunca devolve uma opção fora da sua lista. Mas pode escolher a opção errada dentro da lista, com confiança alta."
+        },
+        {
+          "label": "Cuidado",
+          "text": "Os testes de comparação foram feitos pela própria empresa e o preço é de lançamento. Análises independentes apontam que ele é fraco com números, datas e textos feitos para enganar. Por enquanto, só lê texto.",
+          "warn": true
+        }
       ]
     }
   ],

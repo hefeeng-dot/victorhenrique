@@ -10,113 +10,162 @@
     {
       "name": "Links rápidos",
       "sections": [
-        {"label": "Onde clicar", "list": [
-          "TikTok Academy (cadastro e catálogo em português): tiktokacademy.com/student/catalog?locale=pt-BR",
-          "Lista de cursos e trilhas: tiktokacademy.com/student/collection/2183629-cursos?locale=pt-BR",
-          "Página oficial da Academy no TikTok para Empresas: ads.tiktok.com/business/pt-BR/academy",
-          "Central de Ajuda sobre orçamento: ads.tiktok.com/help/article/budget?lang=pt",
-          "TikTok Ads Manager (onde a campanha é criada): ads.tiktok.com",
-          "Central do vendedor da TikTok Shop no Brasil: seller-br.tiktok.com"
-        ]}
+        {
+          "label": "Onde clicar",
+          "list": [
+            "TikTok Academy (cadastro e catálogo em português): tiktokacademy.com/student/catalog?locale=pt-BR",
+            "Lista de cursos e trilhas: tiktokacademy.com/student/collection/2183629-cursos?locale=pt-BR",
+            "Página oficial da Academy no TikTok para Empresas: ads.tiktok.com/business/pt-BR/academy",
+            "Central de Ajuda sobre orçamento: ads.tiktok.com/help/article/budget?lang=pt",
+            "TikTok Ads Manager (onde a campanha é criada): ads.tiktok.com",
+            "Central do vendedor da TikTok Shop no Brasil: seller-br.tiktok.com"
+          ]
+        }
       ]
     },
     {
       "name": "As 10 trilhas, na ordem",
       "url": "https://www.tiktokacademy.com/student/collection/2183629-cursos?locale=pt-BR",
-      "chips": ["Grátis", "Português (Brasil)"],
+      "chips": [
+        "Grátis",
+        "Português (Brasil)"
+      ],
       "sections": [
-        {"label": "1 · Base (todo mundo)", "list": [
-          "Noções básicas do TikTok: 10 aulas, 77 minutos no total. Conta para negócio, vídeos, primeira campanha, política de anúncios e Spark Ads."
-        ]},
-        {"label": "2 · Escolha uma pelo seu objetivo", "list": [
-          "Gerar reconhecimento da marca: quero que mais gente conheça.",
-          "Gere mais conversões no site: tenho site ou loja virtual e quero vender.",
-          "Promova seu app: quero instalações.",
-          "Gerar e enviar mensagens a leads: quero contatos de clientes.",
-          "Promover sua TikTok Shop: quero vender dentro do TikTok.",
-          "Gerar descobertas com anúncios de pesquisa: quero aparecer para quem busca."
-        ]},
-        {"label": "3 · Criativo (depois do objetivo)", "list": [
-          "Planejamento de criativo",
-          "Produção de criativos",
-          "Iteração do criativo: como testar variações do mesmo vídeo."
-        ]},
-        {"label": "Como ganhar a Conquista", "text": "Ao terminar os cursos obrigatórios de uma trilha, faça a avaliação. Passou, ganha a Conquista oficial daquela trilha, que dá para mostrar no perfil profissional."}
+        {
+          "label": "1 · Base (todo mundo)",
+          "list": [
+            "Noções básicas do TikTok: 10 aulas, 77 minutos no total. Conta para negócio, vídeos, primeira campanha, política de anúncios e Spark Ads. — https://www.tiktokacademy.com/student/collection/2183629/path/3757220?locale=pt-BR"
+          ]
+        },
+        {
+          "label": "2 · Escolha uma pelo seu objetivo",
+          "list": [
+            "Gerar reconhecimento da marca: quero que mais gente conheça. — https://www.tiktokacademy.com/student/collection/2183629/path/3757221?locale=pt-BR",
+            "Gere mais conversões no site: tenho site ou loja virtual e quero vender. — https://www.tiktokacademy.com/student/collection/2183629/path/3757229?locale=pt-BR",
+            "Promova seu app: quero instalações. — https://www.tiktokacademy.com/student/collection/2183629/path/3757230?locale=pt-BR",
+            "Gerar e enviar mensagens a leads: quero contatos de clientes. — https://www.tiktokacademy.com/student/collection/2183629/path/3757231?locale=pt-BR",
+            "Promover sua TikTok Shop: quero vender dentro do TikTok. — https://www.tiktokacademy.com/student/collection/2183629/path/4521850?locale=pt-BR",
+            "Gerar descobertas com anúncios de pesquisa: quero aparecer para quem busca. — https://www.tiktokacademy.com/student/collection/2183629/path/4521851?locale=pt-BR"
+          ]
+        },
+        {
+          "label": "3 · Criativo (depois do objetivo)",
+          "list": [
+            "Planejamento de criativo — https://www.tiktokacademy.com/student/collection/2183629/path/4521847?locale=pt-BR",
+            "Produção de criativos — https://www.tiktokacademy.com/student/collection/2183629/path/4521848?locale=pt-BR",
+            "Iteração do criativo: como testar variações do mesmo vídeo. — https://www.tiktokacademy.com/student/collection/2183629/path/4521849?locale=pt-BR"
+          ]
+        },
+        {
+          "label": "Como ganhar a Conquista",
+          "text": "Ao terminar os cursos obrigatórios de uma trilha, faça a avaliação. Passou, ganha a Conquista oficial daquela trilha, que dá para mostrar no perfil profissional. — https://www.tiktokacademy.com/student/collection/3523001-achievements?locale=pt-BR"
+        }
       ]
     },
     {
       "name": "Noções básicas: o que tem em cada aula",
       "sections": [
-        {"label": "As 10 aulas", "list": [
-          "Introdução ao TikTok (9 min)",
-          "Criar uma conta TikTok para o seu negócio (7 min)",
-          "Encontre e cative sua comunidade no TikTok (4 min)",
-          "Comece a fazer vídeos no TikTok (14 min)",
-          "Faça vídeos no TikTok com um criador (6 min)",
-          "Faça vídeos no TikTok com uma agência de criação (7 min)",
-          "Introdução à publicidade no TikTok (4 min)",
-          "Estruturar sua campanha publicitária (9 min)",
-          "Evitar violações da política de anúncios do TikTok (9 min)",
-          "Promova seus vídeos com os Spark Ads (8 min)"
-        ]},
-        {"label": "Dica", "text": "Faça numa tarde só. A aula mais longa, de 14 minutos, é a de como gravar o vídeo: vale assistir com o celular na mão."}
+        {
+          "label": "As 10 aulas",
+          "list": [
+            "Introdução ao TikTok (9 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757145?locale=pt-BR",
+            "Criar uma conta TikTok para o seu negócio (7 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757146?locale=pt-BR",
+            "Encontre e cative sua comunidade no TikTok (4 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757147?locale=pt-BR",
+            "Comece a fazer vídeos no TikTok (14 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757148?locale=pt-BR",
+            "Faça vídeos no TikTok com um criador (6 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757149?locale=pt-BR",
+            "Faça vídeos no TikTok com uma agência de criação (7 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757150?locale=pt-BR",
+            "Introdução à publicidade no TikTok (4 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757151?locale=pt-BR",
+            "Estruturar sua campanha publicitária (9 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757153?locale=pt-BR",
+            "Evitar violações da política de anúncios do TikTok (9 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/4735860?locale=pt-BR",
+            "Promova seus vídeos com os Spark Ads (8 min) — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/3757155?locale=pt-BR"
+          ]
+        },
+        {
+          "label": "Dica",
+          "text": "Faça numa tarde só. A aula mais longa, de 14 minutos, é a de como gravar o vídeo: vale assistir com o celular na mão."
+        }
       ]
     },
     {
       "name": "Plano de 7 dias (1 hora por dia)",
       "sections": [
-        {"label": "Dia a dia", "list": [
-          "Dia 1: trilha Noções básicas inteira.",
-          "Dia 2: comece a trilha do seu objetivo.",
-          "Dia 3: termine a trilha do objetivo e faça a avaliação.",
-          "Dia 4: trilha Planejamento de criativo.",
-          "Dia 5: grave 3 vídeos curtos sobre o mesmo produto, com ganchos diferentes.",
-          "Dia 6: monte a campanha no Ads Manager, sem publicar.",
-          "Dia 7: revise orçamento e público com o checklist abaixo e publique."
-        ]}
+        {
+          "label": "Dia a dia",
+          "list": [
+            "Dia 1: trilha Noções básicas inteira. — https://www.tiktokacademy.com/student/collection/2183629/path/3757220?locale=pt-BR",
+            "Dia 2: comece a trilha do seu objetivo.",
+            "Dia 3: termine a trilha do objetivo e faça a avaliação.",
+            "Dia 4: trilha Planejamento de criativo — https://www.tiktokacademy.com/student/collection/2183629/path/4521847?locale=pt-BR.",
+            "Dia 5: grave 3 vídeos curtos sobre o mesmo produto, com ganchos diferentes.",
+            "Dia 6: monte a campanha no Ads Manager, sem publicar. — https://ads.tiktok.com/i18n/dashboard",
+            "Dia 7: revise orçamento e público com o checklist abaixo e publique."
+          ]
+        }
       ]
     },
     {
       "name": "Checklist antes de gastar o primeiro real",
       "sections": [
-        {"label": "Os limites oficiais (Central de Ajuda)", "list": [
-          "Orçamento diário mínimo por grupo de anúncios: acima de US$ 20.",
-          "Orçamento diário mínimo quando o orçamento é definido na campanha: acima de US$ 50.",
-          "Durante a fase de aprendizado, aumente o orçamento em no máximo 40% por ajuste; depois dela, até 30%.",
-          "Evite ajustar o orçamento com frequência maior do que a cada 2 dias."
-        ]},
-        {"label": "Confira antes de publicar", "list": [
-          "Objetivo da campanha é o mesmo da trilha que você fez?",
-          "Tem pelo menos 3 vídeos diferentes para o mesmo anúncio?",
-          "O link leva para a página certa e ela abre rápido no celular?",
-          "O vídeo e o texto seguem a política de anúncios (aula de 9 minutos na trilha básica)?",
-          "Você sabe quanto pode perder no teste sem se incomodar?"
-        ]},
-        {"label": "Cuidado", "text": "Os valores mínimos aparecem em dólar na Central de Ajuda. Na sua conta, confira o valor na moeda que você usa antes de publicar. O curso é grátis; o anúncio não.", "warn": true}
+        {
+          "label": "Os limites oficiais (Central de Ajuda)",
+          "list": [
+            "Orçamento diário mínimo por grupo de anúncios: acima de US$ 20. — https://ads.tiktok.com/resources/help/article/budget?lang=pt",
+            "Orçamento diário mínimo quando o orçamento é definido na campanha: acima de US$ 50.",
+            "Durante a fase de aprendizado, aumente o orçamento em no máximo 40% por ajuste; depois dela, até 30%.",
+            "Evite ajustar o orçamento com frequência maior do que a cada 2 dias."
+          ]
+        },
+        {
+          "label": "Confira antes de publicar",
+          "list": [
+            "Objetivo da campanha é o mesmo da trilha que você fez?",
+            "Tem pelo menos 3 vídeos diferentes para o mesmo anúncio?",
+            "O link leva para a página certa e ela abre rápido no celular?",
+            "O vídeo e o texto seguem a política de anúncios (aula de 9 minutos na trilha básica)? — https://www.tiktokacademy.com/student/collection/2183629/path/3757220/activity/4735860?locale=pt-BR",
+            "Você sabe quanto pode perder no teste sem se incomodar?"
+          ]
+        },
+        {
+          "label": "Cuidado",
+          "text": "Os valores mínimos aparecem em dólar na Central de Ajuda. Na sua conta, confira o valor na moeda que você usa antes de publicar. O curso é grátis; o anúncio não. — https://ads.tiktok.com/help/?lang=pt",
+          "warn": true
+        }
       ]
     },
     {
       "name": "Quer vender dentro do TikTok? (TikTok Shop)",
       "url": "https://seller-br.tiktok.com",
       "sections": [
-        {"label": "O que é", "text": "A loja dentro do próprio TikTok: a pessoa compra sem sair do app. Chegou ao Brasil em 8 de maio de 2025."},
-        {"label": "Por onde ir", "list": [
-          "Faça a trilha Promover sua TikTok Shop na Academy.",
-          "Veja os requisitos de cadastro de vendedor na Central do vendedor (seller-br.tiktok.com) antes de montar o catálogo."
-        ]}
+        {
+          "label": "O que é",
+          "text": "A loja dentro do próprio TikTok: a pessoa compra sem sair do app. Chegou ao Brasil em 8 de maio de 2025."
+        },
+        {
+          "label": "Por onde ir",
+          "list": [
+            "Faça a trilha Promover sua TikTok Shop na Academy. — https://www.tiktokacademy.com/student/collection/2183629/path/4521850?locale=pt-BR",
+            "Veja os requisitos de cadastro de vendedor na Central do vendedor (seller-br.tiktok.com) antes de montar o catálogo. — https://seller-br.tiktok.com/"
+          ]
+        }
       ]
     },
     {
       "name": "Prompt 1: roteiro de vídeo para anúncio",
       "sections": [
-        {"label": "Quando usar", "text": "Antes de gravar. Cole no ChatGPT, Claude ou Gemini."}
+        {
+          "label": "Quando usar",
+          "text": "Antes de gravar. Cole no ChatGPT (https://chatgpt.com/), Claude ou Gemini."
+        }
       ],
       "prompt": "Crie 3 roteiros de vídeo vertical de 20 a 30 segundos para anunciar [produto/serviço] no TikTok, para [público]. Para cada roteiro: gancho falado nos 2 primeiros segundos, o que aparece na tela a cada cena, texto na tela, e a chamada no final. Linguagem simples, sem cara de propaganda, como se fosse um vídeo normal do app. Os 3 ganchos precisam ser bem diferentes entre si."
     },
     {
       "name": "Prompt 2: ler o resultado da campanha",
       "sections": [
-        {"label": "Quando usar", "text": "Depois de alguns dias rodando. Copie as métricas do Ads Manager (sem dados de pagamento) e cole."}
+        {
+          "label": "Quando usar",
+          "text": "Depois de alguns dias rodando. Copie as métricas do Ads Manager (sem dados de pagamento) e cole. — https://ads.tiktok.com/i18n/dashboard"
+        }
       ],
       "prompt": "Sou iniciante em anúncios no TikTok. Vou colar as métricas de uma campanha: gasto, impressões, cliques, CTR, custo por resultado e resultados, separadas por anúncio. Me explique em linguagem simples: 1) qual vídeo está indo melhor e por quê, 2) qual eu deveria pausar, 3) o que testar na próxima rodada. Não me mande aumentar o orçamento mais de 40% de uma vez nem mexer antes de 2 dias.\n\nMétricas:\n[cole aqui]"
     }

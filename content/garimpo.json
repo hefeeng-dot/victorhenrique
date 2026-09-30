@@ -19,7 +19,7 @@
       "sections": [
         {
           "label": "O que é",
-          "text": "Um sistema que você instala no seu agente de IA (funciona melhor com o Claude Code) para ele seguir um processo de engenharia completo: planejar, testar, implementar, revisar com contexto novo, verificar, lembrar e melhorar. Em vez de refazer isso em cada prompt, você instala uma vez. Inclui 68 agentes, 292 skills, hooks, regras, memória e o AgentShield, que escaneia prompts, hooks, configuração de MCP, permissões e segredos do seu agente."
+          "text": "Um sistema que você instala no seu agente de IA (funciona melhor com o Claude Code) para ele seguir um processo de engenharia completo: planejar, testar, implementar, revisar com contexto novo, verificar, lembrar e melhorar. Em vez de refazer isso em cada prompt, você instala uma vez. Inclui 68 agentes, 292 skills, hooks, regras, memória e o AgentShield (https://github.com/affaan-m/agentshield), que escaneia prompts, hooks, configuração de MCP, permissões e segredos do seu agente."
         },
         {
           "label": "Antes de começar",
@@ -62,10 +62,10 @@
         {
           "label": "Cuidado",
           "list": [
-            "Instale só pelos canais oficiais: o repositório affaan-m/ECC, os pacotes npm ecc-universal e ecc-agentshield, o plugin ecc@ecc e o site ecc.tools. Cópias e espelhos de terceiros podem conter malware.",
+            "Instale só pelos canais oficiais: o repositório https://github.com/affaan-m/ECC, os pacotes npm ecc-universal e ecc-agentshield, o plugin ecc@ecc e o site https://ecc.tools. Cópias e espelhos de terceiros podem conter malware.",
             "Escolha um único método de instalação por agente. Empilhar dois duplica skills, comandos e hooks.",
             "É peça para quem já usa um agente de código. Sem esse ponto de partida, não muda nada no seu dia.",
-            "O código é livre (MIT). A versão ECC Pro, para repositórios privados, é paga (o README cita a partir de US$ 19 por assento ao mês)."
+            "O código é livre (MIT). A versão ECC Pro, para repositórios privados, é paga (o README cita a partir de US$ 19 por assento ao mês (planos em https://ecc.tools/pricing))."
           ],
           "warn": true
         }
@@ -114,7 +114,7 @@
         },
         {
           "label": "Onde aprender mais",
-          "text": "Documentação: deepseek-harness.github.io/deepseek-harness. Plugins da comunidade ganham o tópico dsh-plugin no GitHub."
+          "text": "Documentação: https://deepseek-harness.github.io/deepseek-harness/. Plugins da comunidade ganham o tópico dsh-plugin no GitHub."
         },
         {
           "label": "Casos de uso",
@@ -167,7 +167,7 @@
         {
           "label": "Antes de começar",
           "list": [
-            "Uma chave de API: cadastre-se em firecrawl.dev (o serviço hospedado), ou hospede você mesmo seguindo o guia de self-hosting em docs.firecrawl.dev/contributing/self-host"
+            "Uma chave de API: cadastre-se em https://firecrawl.dev (o serviço hospedado), ou hospede você mesmo seguindo o guia de self-hosting em https://docs.firecrawl.dev/contributing/self-host"
           ]
         },
         {
@@ -175,7 +175,7 @@
           "code": [
             {
               "caption": "Python:",
-              "code": "pip install firecrawl-py"
+              "code": "(não alterar o bloco de código) página oficial: https://pypi.org/project/firecrawl-py/"
             },
             {
               "caption": "Node.js:",
@@ -216,7 +216,7 @@
         {
           "label": "Cuidado",
           "list": [
-            "Uso em escala consome créditos. No exemplo do README, um crawl de 50 páginas gastou 50 créditos. Confira o plano atual no site antes de rodar coisas grandes.",
+            "Uso em escala consome créditos. No exemplo do README, um crawl de 50 páginas gastou 50 créditos. Confira o plano atual em https://www.firecrawl.dev/pricing antes de rodar coisas grandes.",
             "O que você raspa é responsabilidade sua: respeite os termos de uso do site e as leis de dados pessoais (como a LGPD).",
             "A licença AGPL-3.0 tem obrigações se você modificar o código e oferecê-lo como serviço. Se for comercializar, consulte um advogado."
           ],
@@ -308,7 +308,7 @@
         {
           "label": "Cuidado",
           "list": [
-            "O pacote oficial se chama graphifyy, com dois y. Outros pacotes graphify* no PyPI não são afiliados ao projeto: instalar o errado é risco de pacote falso.",
+            "O pacote oficial se chama graphifyy (https://pypi.org/project/graphifyy/), com dois y. Outros pacotes graphify* no PyPI não são afiliados ao projeto: instalar o errado é risco de pacote falso.",
             "O código é analisado localmente e não sai da sua máquina. Já documentos, PDFs, imagens e vídeo passam por um modelo de IA (o do seu assistente ou uma chave de API que você configurar), então o conteúdo sai do computador e consome uso."
           ],
           "warn": true
@@ -388,7 +388,7 @@
             "Entender um código que você acabou de receber: pedir um resumo das mudanças de ontem ou da arquitetura.",
             "Gerar um app novo a partir de um PDF, uma imagem ou um esboço, usando a leitura multimodal.",
             "Automatizar tarefas de repositório, como consultar pull requests ou resolver rebases complexos.",
-            "Revisar pull requests e organizar issues sozinho, usando a GitHub Action do projeto.",
+            "Revisar pull requests e organizar issues sozinho, usando a GitHub Action do projeto (https://github.com/google-gemini/gemini-cli-action).",
             "Guardar as regras do seu projeto num arquivo GEMINI.md para ele sempre agir do seu jeito."
           ]
         },

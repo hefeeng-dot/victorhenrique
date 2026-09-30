@@ -201,7 +201,7 @@ def codeblocks(s):
     out = []
     for c in s.get("code", []):
         if c.get("caption"):
-            out.append(f'<p class="caption">{E(c["caption"])}</p>')
+            out.append(f'<p class="caption">{linkify(c["caption"])}</p>')
         out.append(f'<div class="codeblock"><pre>{E(c["code"])}</pre>'
                    f'<button class="copy" type="button">Copiar</button></div>')
     return "".join(out)
@@ -216,7 +216,7 @@ def render_uses(s, notes):
         cards = "".join(f'<li>{ICON_SPARK}<span>{linkify(x)}</span></li>' for x in s["list"])
         body = (f'<p>{E(s["text"])}</p>' if s.get("text") else "") + f'<ul class="use-grid">{cards}</ul>'
     else:
-        body = f'<p class="use-one">{ICON_SPARK}<span>{E(s.get("text", ""))}</span></p>'
+        body = f'<p class="use-one">{ICON_SPARK}<span>{linkify(s.get("text", ""))}</span></p>'
     note = "".join(f'<p class="note">{ICON_INFO}<span><b>{E(x["label"])}:</b> {E(x.get("text", ""))}</span></p>'
                    for x in notes)
     return f'<div class="sec uses"><h3>{E(s["label"])}</h3>{body}{note}</div>'
@@ -229,12 +229,12 @@ def render_warn(s):
 
 def render_reqs(s):
     items = s.get("list") or ([s["text"]] if s.get("text") else [])
-    lis = "".join(f'<li>{ICON_CHECK}<span>{E(x)}</span></li>' for x in items)
+    lis = "".join(f'<li>{ICON_CHECK}<span>{linkify(x)}</span></li>' for x in items)
     return f'<div class="reqs"><h4>{E(s["label"])}</h4><ul>{lis}</ul></div>'
 
 
 def render_step(s):
-    txt = f'<p>{E(s["text"])}</p>' if s.get("text") else ""
+    txt = f'<p>{linkify(s["text"])}</p>' if s.get("text") else ""
     return (f'<div class="step"><h4>{ICON_TERM}<span>{E(s["label"])}</span></h4>'
             f'{txt}{codeblocks(s)}</div>')
 
