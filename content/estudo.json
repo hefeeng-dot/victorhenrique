@@ -1,0 +1,117 @@
+{
+  "code": "ESTUDO",
+  "title": "Roteiro de estudo de IA: 4 etapas, só material gratuito e oficial",
+  "summary": "Do que é um LLM até construir o seu: vídeos, guias e repositórios na ordem certa, com uma tarefa prática por etapa, um prompt de professora particular e um plano de 4 semanas.",
+  "date": "2026-09-29",
+  "accent": "#A66B7A",
+  "verified": "29/09/2026",
+  "intro": "Tem conteúdo de IA demais e quase nenhum com ordem. Este roteiro separa o estudo em 4 etapas: entender, usar bem, agentes e construir. Cada etapa tem poucos links, todos gratuitos e de fonte oficial, e termina com uma tarefa prática. Não precisa ir até o fim: pare na etapa que já resolve o seu problema. Quem não programa pode parar na etapa 3.",
+  "items": [
+    {
+      "name": "Links rápidos",
+      "sections": [
+        {"label": "Etapa 1 · Entender", "list": [
+          "Intro to Large Language Models (Andrej Karpathy): youtube.com/watch?v=zjkBMFhNj_g",
+          "Neural networks, série em vídeo (3Blue1Brown): youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
+          "Building Large Language Models (Stanford CS229): youtube.com/watch?v=9vM4p9NN0Ts"
+        ]},
+        {"label": "Etapa 2 · Usar bem", "list": [
+          "Guia de Engenharia de Prompt, em português: promptingguide.ai/pt",
+          "Generative AI for Beginners (Microsoft, 21 aulas, tradução pt-BR): github.com/microsoft/generative-ai-for-beginners"
+        ]},
+        {"label": "Etapa 3 · Agentes", "list": [
+          "Building effective agents (Anthropic): anthropic.com/engineering/building-effective-agents",
+          "A practical guide to building agents (OpenAI, PDF de 33 páginas): cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf",
+          "Agents, whitepaper (Google): kaggle.com/whitepaper-agents",
+          "AI Agents for Beginners (Microsoft, 18 aulas, tradução pt-BR): github.com/microsoft/ai-agents-for-beginners",
+          "O que é MCP, o padrão que liga a IA às suas ferramentas: modelcontextprotocol.io"
+        ]},
+        {"label": "Etapa 4 · Construir", "list": [
+          "LLMs-from-scratch (Sebastian Raschka): github.com/rasbt/LLMs-from-scratch",
+          "LLM Course (Maxime Labonne): github.com/mlabonne/llm-course",
+          "AI Agents Course (Hugging Face, grátis, com certificado): huggingface.co/learn/agents-course"
+        ]}
+      ]
+    },
+    {
+      "name": "Etapa 1 · Entender o que é um LLM",
+      "chips": ["Sem código", "3 a 5 horas"],
+      "sections": [
+        {"label": "O que é", "text": "A base que faz o resto fazer sentido: o que é um modelo de linguagem, como ele é treinado, por que ele erra e por que às vezes inventa. Sem programação e sem matemática pesada."},
+        {"label": "Por onde ir", "list": [
+          "Comece pela palestra do Karpathy (1 hora). É a melhor introdução geral.",
+          "Se quiser ver por dentro, assista aos vídeos da série do 3Blue1Brown sobre redes neurais: animações que explicam o que acontece lá dentro.",
+          "Por último, a aula de Stanford sobre como se constrói um LLM, para ver o processo inteiro de treino."
+        ]},
+        {"label": "Dica", "text": "Os três estão em inglês. No YouTube, ative a legenda e escolha Tradução automática > Português."},
+        {"label": "Tarefa prática", "text": "Explique para alguém, em 5 frases e sem jargão, o que acontece quando você manda uma pergunta para o ChatGPT. Se travar, volte ao vídeo do Karpathy."}
+      ]
+    },
+    {
+      "name": "Etapa 2 · Usar bem no dia a dia",
+      "chips": ["Sem código", "4 a 6 horas"],
+      "url": "https://www.promptingguide.ai/pt",
+      "sections": [
+        {"label": "O que é", "text": "Prompt é instrução, não pergunta. Aqui você aprende a dar contexto, formato e objetivo para a IA, que é o que mais muda o resultado para quem usa IA no trabalho."},
+        {"label": "Por onde ir", "list": [
+          "Leia no Guia de Engenharia de Prompt as partes de introdução e de técnicas básicas (zero-shot, few-shot e cadeia de pensamento).",
+          "No curso Generative AI for Beginners, da Microsoft, faça as primeiras aulas de conceitos e de prompts. Na pasta translations tem a versão em pt-BR."
+        ]},
+        {"label": "Tarefa prática", "text": "Pegue uma tarefa que você repete toda semana (um e-mail, um resumo, um relatório) e escreva um prompt com: quem você é, para quem é o texto, o formato de saída e um exemplo. Salve como modelo."}
+      ],
+      "prompt": "Você é um especialista em escrever prompts. Vou te passar uma tarefa que eu faço toda semana. Me devolva um prompt pronto para eu reutilizar, com: 1) o papel que a IA deve assumir, 2) o contexto que eu preciso colar toda vez, 3) o formato exato da resposta, 4) um exemplo de resposta boa. Depois me diga o que eu devo trocar a cada uso.\n\nMinha tarefa:\n[descreva aqui]"
+    },
+    {
+      "name": "Etapa 3 · Entender agentes",
+      "chips": ["Sem código para ler", "5 a 8 horas"],
+      "sections": [
+        {"label": "O que é", "text": "Agente é uma IA que usa ferramentas e executa passos: consulta agenda, lê planilha, manda e-mail. Os melhores textos sobre isso foram escritos pelas próprias empresas que fazem os modelos."},
+        {"label": "Por onde ir", "list": [
+          "Building effective agents, da Anthropic: curto e direto, explica quando usar agente e quando um fluxo simples basta.",
+          "A practical guide to building agents, da OpenAI: modelos, ferramentas, instruções e limites de segurança.",
+          "Whitepaper Agents, do Google: a parte de arquitetura e ferramentas.",
+          "Para praticar: AI Agents for Beginners, da Microsoft (18 aulas, com tradução pt-BR).",
+          "Para entender como a IA se liga a outros apps: a página inicial do MCP."
+        ]},
+        {"label": "Tarefa prática", "text": "Desenhe no papel um agente para uma tarefa sua: o que entra, quais ferramentas ele usaria, que decisão ele toma e em que ponto uma pessoa precisa aprovar."},
+        {"label": "Cuidado", "text": "Agente que age sozinho também erra sozinho. Comece sempre com uma pessoa aprovando as ações que custam dinheiro ou falam com cliente.", "warn": true}
+      ]
+    },
+    {
+      "name": "Etapa 4 · Construir o seu",
+      "chips": ["Precisa de Python", "20 horas ou mais"],
+      "sections": [
+        {"label": "O que é", "text": "A etapa de quem quer programar com IA ou entender o modelo por dentro. É opcional: se você não programa, as etapas 1 a 3 já mudam o seu jeito de trabalhar."},
+        {"label": "Por onde ir", "list": [
+          "LLMs-from-scratch: monta um modelo parecido com o ChatGPT, passo a passo, em PyTorch. É o código do livro Build a Large Language Model (From Scratch).",
+          "LLM Course: roteiros e notebooks prontos para rodar no Google Colab, do básico à parte de engenharia.",
+          "AI Agents Course, da Hugging Face: gratuito, com certificado. Pede Python básico."
+        ]},
+        {"label": "Para começar", "code": [
+          {"caption": "Baixe o repositório e siga os capítulos na ordem:", "code": "git clone https://github.com/rasbt/LLMs-from-scratch.git"}
+        ]},
+        {"label": "Tarefa prática", "text": "Termine o capítulo 2 do LLMs-from-scratch (preparar o texto para o modelo) e explique com as suas palavras o que é um token."}
+      ]
+    },
+    {
+      "name": "Prompt: a IA como sua professora particular",
+      "sections": [
+        {"label": "Quando usar", "text": "Em qualquer etapa, quando um vídeo ou texto ficar difícil. Cole no ChatGPT, Claude ou Gemini."}
+      ],
+      "prompt": "Quero aprender [tema] e estou na etapa [1, 2, 3 ou 4] de um roteiro de estudo de IA. Meu nível: [iniciante / uso IA no trabalho / programo em Python].\n\nFaça assim:\n1. Me explique o conceito em até 10 linhas, com um exemplo do dia a dia.\n2. Me faça 3 perguntas para ver se eu entendi. Espere minhas respostas.\n3. Corrija o que eu errar e me dê um exercício curto para praticar.\nNão avance para o próximo assunto até eu acertar as 3 perguntas."
+    },
+    {
+      "name": "Plano de 4 semanas (1 hora por dia)",
+      "sections": [
+        {"label": "Semana a semana", "list": [
+          "Semana 1: etapa 1 inteira. Sexta: tarefa prática da etapa 1.",
+          "Semana 2: etapa 2. Monte 3 prompts-modelo para tarefas reais suas.",
+          "Semana 3: etapa 3. Leia os guias da Anthropic e da OpenAI e desenhe um agente para uma tarefa sua.",
+          "Semana 4: se você programa, comece a etapa 4. Se não, use a semana para aplicar o que aprendeu e medir o tempo que economizou."
+        ]},
+        {"label": "Regra", "text": "Uma etapa por vez. Se não aplicou em algo seu, não avance."}
+      ]
+    }
+  ],
+  "closing": "Salve este roteiro e comece hoje pela etapa 1. Em um mês, você sai de quem assiste tutorial para quem usa IA com método."
+}
