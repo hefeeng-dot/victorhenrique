@@ -1,0 +1,157 @@
+{
+  "code": "NEEDLE",
+  "title": "Needle: IA de 14 MB que roda sem internet (e devolve JSON)",
+  "summary": "O modelo de fundação da Cactus Compute que roda no celular, no relógio e num robô: comando de instalação conferido, exemplo de texto para JSON, chamada de função na prática, como levar para o aparelho e o que muda no Needle 3.",
+  "date": "2026-09-30",
+  "accent": "#5B7C99",
+  "verified": "30/09/2026",
+  "intro": "O Needle é um modelo de IA inteiro dentro de um binário de 8 a 29 MB: sem nuvem, sem API, sem internet. Ele não conversa — ele decide e extrai: você declara as funções que o seu aparelho tem, o usuário pede em linguagem natural e o modelo devolve a chamada pronta em JSON, com a confiança de cada resposta. Este kit tem o comando de instalação que funciona hoje, o exemplo de texto para JSON, a chamada de função na prática e o caminho para rodar no aparelho. Tudo conferido na fonte oficial em 30/09/2026.",
+  "items": [
+    {
+      "name": "Links rápidos",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial (Cactus Compute): https://github.com/cactus-compute/needle",
+            "Pesos e motores por plataforma: https://huggingface.co/Cactus-Compute/needle3",
+            "Página do projeto, com demonstração no navegador: https://cactuscompute.com/needle"
+          ]
+        },
+        {
+          "label": "Os guias oficiais (são curtos e é onde está o detalhe)",
+          "list": [
+            "Documentação Python: API, formato da resposta, contrato de comportamento e CLI: https://cactuscompute.com/blog/needle-python-docs",
+            "Como desenhar as ferramentas: https://cactuscompute.com/blog/designing-tools-for-needle",
+            "Como usar a confiança que ele devolve: https://cactuscompute.com/blog/needle-confidence",
+            "Extração de JSON estruturado: https://cactuscompute.com/blog/structured-extraction-with-needle",
+            "Aparelhos suportados (celular, relógio, navegador, WASI, rede isolada): https://cactuscompute.com/blog/needle-supported-devices",
+            "Ajuste fino (fine-tuning): https://cactuscompute.com/blog/finetuning-needle"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Instalar e rodar em 3 minutos",
+      "url": "https://github.com/cactus-compute/needle",
+      "chips": ["Python", "Grátis", "Apache-2.0"],
+      "sections": [
+        {
+          "label": "Instalar",
+          "code": [
+            {"caption": "O pacote oficial no PyPI (versão 3.0.6 em 30/09/2026):", "code": "pip install cactus-needle"},
+            {"caption": "Se você for fazer ajuste fino (fine-tuning):", "code": "pip install \"cactus-needle[train]\""}
+          ]
+        },
+        {
+          "label": "O primeiro exemplo (o do próprio README oficial)",
+          "text": "A função que você decora é a ferramenta: a assinatura define os tipos dos argumentos, e o texto de dentro das aspas é a descrição que o modelo lê para escolher.",
+          "code": [
+            {"caption": "salve como teste.py e rode:", "code": "import needle\n\n@needle.tool\ndef get_weather(city: str):\n    \"Get the current weather for a city.\"\n    return {\"city\": city, \"temp_c\": 27, \"sky\": \"clear\"}\n\nagent = needle.Needle(tools=[get_weather])\nprint(agent.run(\"what's it like in Lagos right now?\")[\"results\"])\n# [{'city': 'Lagos', 'temp_c': 27, 'sky': 'clear'}]"}
+          ]
+        },
+        {
+          "label": "Já usava o Needle 2?",
+          "text": "O mesmo pacote continua rodando a geração anterior: é só passar `generation=2` na criação do objeto.",
+          "code": [
+            {"code": "agent = needle.Needle(tools=[get_weather], generation=2)"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Texto → JSON: o que interessa para quem automatiza",
+      "url": "https://cactuscompute.com/blog/structured-extraction-with-needle",
+      "chips": ["Sem API", "Roda offline"],
+      "sections": [
+        {
+          "label": "Como funciona",
+          "text": "Você declara o formato da saída (o registro), entrega o texto bagunçado e recebe os campos tipados de volta: uma nota fiscal, um agendamento, um aviso, um formulário. A gramática de saída garante que o resultado sempre possa ser lido por um programa — e o mesmo mecanismo serve para classificar."
+        },
+        {
+          "label": "Onde isso resolve no dia a dia",
+          "list": [
+            "Nota ou cupom que chega por mensagem → campos separados sem ninguém digitar",
+            "Mensagem de cliente → urgente / não urgente, com a confiança da decisão",
+            "Texto solto → linha de planilha, pronta para o sistema",
+            "Busca local: o mesmo modelo devolve vetor (embedding) para achar e rotear sem internet"
+          ]
+        },
+        {
+          "label": "Passo a passo do guia oficial",
+          "text": "O guia mostra o registro como a **única** ferramenta do agente, os resultados tipados e a classificação com lista fechada de opções. Vale ler antes de desenhar o seu primeiro caso."
+        }
+      ]
+    },
+    {
+      "name": "As duas pegadinhas (leia antes de confiar)",
+      "chips": ["Importante", "Vem da fonte oficial"],
+      "sections": [
+        {
+          "label": "1 · Ele devolve lista vazia, não um chute",
+          "text": "Se o usuário pedir algo que nenhuma ferramenta declarada cobre, a resposta é uma lista vazia. Isso é decisão de projeto, não bug: ele prefere não responder a inventar. O efeito colateral é que a qualidade do resultado depende da **sua lista de ferramentas** — se ela estiver mal desenhada, ele simplesmente não faz.",
+          "warn": true
+        },
+        {
+          "label": "2 · A confiança é calibrada, mas não é garantia",
+          "text": "Toda resposta vem com um número de confiança (por exemplo, 0,94) calculado pelo próprio modelo. Ele pode escolher a ferramenta errada com confiança alta. Por isso o guia oficial ensina a rotear em três caminhos — agir, confirmar ou recusar — em vez de obedecer sempre.",
+          "warn": true
+        },
+        {
+          "label": "3 · Ele não é um chatbot",
+          "text": "O próprio projeto diz: trocaram capacidade de conversa geral por ganhar de modelos 10 vezes maiores em chamada de ferramenta no aparelho. Para texto longo e criativo, continue na nuvem.",
+          "warn": true
+        }
+      ]
+    },
+    {
+      "name": "Levar para o aparelho (celular, relógio, robô)",
+      "url": "https://cactuscompute.com/blog/needle-supported-devices",
+      "chips": ["8–29 MB", "Roda no próprio hardware"],
+      "sections": [
+        {
+          "label": "O caminho",
+          "list": [
+            "O modelo é um arquivo único (formato .cact) que o motor lê no lugar — sem carregar tudo na memória",
+            "Pesos e motores por plataforma ficam no Hugging Face (Android, iOS, relógios, Linux, navegador)",
+            "Existe CLI para rodar e testar, API em C para embutir, além de navegador e WASI",
+            "Funciona em rede isolada (air-gapped): nenhum dado sai do aparelho"
+          ]
+        },
+        {
+          "label": "Comando de exemplo (do site oficial)",
+          "code": [
+            {"caption": "rodar como serviço local, escutando pedidos:", "code": "./needle --model needle3.cact --tools tools.json --serve"},
+            {"caption": "ou um pedido só, na linha de comando:", "code": "./needle --model needle3.cact --tools tools.json --prompt \"dim the living room to 30\""}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "O que muda no Needle 3",
+      "url": "https://cactuscompute.com/needle",
+      "chips": ["8 a 29 MB", "121 M de parâmetros", "2 a 20 camadas"],
+      "sections": [
+        {
+          "label": "O mesmo modelo, em fatias",
+          "text": "O Needle 3 foi treinado para que **toda a profundidade, de 2 a 20 camadas, seja um modelo que dá para usar**. Você corta camadas até caber no aparelho que tem — o mesmo modelo, menor, e não um modelo aleatório reduzido."
+        },
+        {
+          "label": "Por que 121 milhões de parâmetros cabem em 14 MB",
+          "text": "A maior parte dos parâmetros está na memória de n-gramas (engram), então o modelo de 121 milhões faz a conta de um de 50 milhões. É compressão de 2 bits e pesos embutidos no binário."
+        },
+        {
+          "label": "Números oficiais (30/09/2026)",
+          "list": [
+            "Binário único de 8 a 29 MB",
+            "121 M de parâmetros na versão cheia (a maior parte no engram)",
+            "Cerca de 28 MB de RAM numa sessão inteira",
+            "Licença Apache-2.0 — uso comercial liberado",
+            "12.913 estrelas no GitHub em 30/09/2026"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": "Comece pelo exemplo de 3 minutos: instale, rode o teste do tempo com uma função sua e veja o JSON voltar. Se funcionar, o próximo passo é o guia de extração estruturada — é ali que ele substitui digitação. E antes de ligar em algo que decide de verdade, leia o guia de confiança: agir, confirmar ou recusar é uma escolha sua, não do modelo."
+}
