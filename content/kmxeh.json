@@ -1,0 +1,146 @@
+{
+  "code": "KMXEH",
+  "title": "7 repositórios abertos que fazem o trabalho de serviços caros",
+  "summary": "Sete projetos de código aberto que substituem serviços cobrados caro. Para cada um: o link oficial, o que ele substitui e o que, ali, é grátis e o que é trabalho de implantação — que é a parte que se cobra.",
+  "date": "2026-10-06",
+  "accent": "#6F8062",
+  "verified": "06/10/2026",
+  "intro": "Estes sete projetos fazem, de graça, o que muita agência e muito fornecedor cobram como serviço. O software é aberto e o código está no GitHub — o que não vem pronto é a instalação, a configuração no seu contexto e o acompanhamento. Essa parte é trabalho, e é ela que se cobra. Estrelas e licenças foram conferidas na API do GitHub em 06/10/2026: se algum número estiver diferente quando você olhar, o repositório é a fonte, não este texto.",
+  "items": [
+    {
+      "name": "01 · O CRM — trycompai/crm",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/trycompai/crm",
+            "11.037 estrelas · licença MIT (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "CRM por assinatura, cobrado por usuário e por mês",
+            "O trabalho que se cobra: modelar o funil do cliente, importar a base, ligar no e-mail e no WhatsApp e treinar o time"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 · A auditoria de SEO — every-app/open-seo",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/every-app/open-seo",
+            "22.283 estrelas · licença MIT (conferido em 06/10/2026)",
+            "O próprio projeto se apresenta como alternativa aberta ao Semrush e ao Ahrefs"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "Ferramentas de auditoria de site cobradas por assinatura mensal",
+            "O trabalho que se cobra: rodar a auditoria, ler o resultado com o dono do site e priorizar o que corrigir primeiro"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 · O vigia de sites — dgtlmoon/changedetection.io",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/dgtlmoon/changedetection.io",
+            "34.753 estrelas · licença Apache-2.0 (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "Serviços de monitoramento de preço, estoque e edital cobrados por site monitorado",
+            "O trabalho que se cobra: escolher o que vigiar, escrever a regra de alerta que não dá falso positivo e entregar o aviso no canal certo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "04 · O clonador de sites — JCodesMore/ai-website-cloner-template",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/JCodesMore/ai-website-cloner-template",
+            "35.595 estrelas · licença MIT (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "A parte braçal de refazer página e landing page — o ponto de partida, não a entrega final",
+            "O trabalho que se cobra: adaptar o clone à marca, trocar texto e imagem, ajustar no celular e ligar no formulário"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "05 · O gerador de relatório — hugohe3/ppt-master",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/hugohe3/ppt-master",
+            "57.492 estrelas · licença MIT (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "A montagem manual de apresentação a partir de documento, proposta e medição",
+            "O trabalho que se cobra: deixar o modelo no padrão do cliente e revisar as contas antes de apresentar"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "06 · O robô de coleta — D4Vinci/Scrapling",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/D4Vinci/Scrapling",
+            "85.481 estrelas · licença BSD-3 (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "Coleta manual de dado que existe em página de site (cotação, listagem, catálogo)",
+            "O trabalho que se cobra: escrever a coleta certa, manter de pé quando o site muda e entregar o dado limpo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "07 · A leitura de papelada — PaddlePaddle/PaddleOCR",
+      "sections": [
+        {
+          "label": "O projeto",
+          "list": [
+            "Repositório oficial: https://github.com/PaddlePaddle/PaddleOCR",
+            "90.560 estrelas · licença Apache-2.0 (conferido em 06/10/2026)"
+          ]
+        },
+        {
+          "label": "O que ele substitui",
+          "list": [
+            "Digitação de PDF, nota, cupom e ficha em papel",
+            "O trabalho que se cobra: padronizar a saída, conferir o que a leitura errou e integrar no sistema de destino"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": "A regra que eu uso: a ferramenta é grátis; o que se cobra é o trabalho de colocar para funcionar. Comece por um só — o que mais dói no seu dia — e faça a implantação inteira antes de oferecer para outra pessoa. É essa implantação que vira o seu serviço."
+}
