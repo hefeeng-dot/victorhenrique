@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obrigado · Lembretes para Windows</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17181A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2317181A'/%3E%3Cpath d='M10 13a6 6 0 0 1 12 0c0 6 2.5 8 2.5 8h-17S10 19 10 13' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F2EE;color:#17181A;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#17181A}a:hover{color:#3B3E44}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif}
+button{font-family:inherit;cursor:pointer}
+.btn{transition:transform .2s ease, box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,24,26,.18)}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(23,24,26,.08)}
+.wall{background-color:#DDE7EA;background-image:radial-gradient(rgba(23,24,26,.07) 1px, transparent 1px);background-size:18px 18px}
+.qa-input:focus{outline:2px solid #17181A;outline-offset:2px}
+@keyframes peek{0%,100%{transform:translateY(-70px)}6%,42%{transform:translateY(0)}48%{transform:translateY(-70px)}}
+.eyes-peek{animation:peek 9s ease-in-out 2.5s infinite both}
+.eyes-on{transform:translateY(0);transition:transform .4s cubic-bezier(.2,.9,.25,1.2)}
+@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
+.eye{animation:blink 4.2s infinite}
+.pupil{transition:transform .12s linear}
+@keyframes toastIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.toast{animation:toastIn .5s cubic-bezier(.2,.9,.25,1.15) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.fade-up{animation:fadeUp .8s ease both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.45s}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.nudge{animation:nudge 1.6s ease-in-out infinite}
+@keyframes ring{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(14deg)}94%{transform:rotate(-12deg)}97%{transform:rotate(6deg)}}
+.ring{animation:ring 5s ease-in-out infinite;transform-origin:50% 10%}
+@keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+.caret{animation:caret 1s steps(1) infinite}
+@keyframes held{0%,100%{opacity:1}50%{opacity:.45}}
+.held{animation:held 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+.faq-a{margin:0;padding:0 20px 18px;font-size:16px;line-height:1.6;color:#4A4D54}
+.faq-icon{font-size:22px;line-height:1;color:#3B3E44;transition:transform .3s ease}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+html{scroll-behavior:smooth}
+[hidden]{display:none !important}
+</style>
+<!-- PIXEL DA META / TIKTOK: cole aqui o código, com o evento de compra (Purchase), se a plataforma de pagamento não enviar sozinha -->
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F4F2EE; color: #17181A; overflow-x: hidden">
+
+<header style="max-width: 1100px; margin: 0 auto; padding: 22px 24px; display: flex; align-items: center; gap: 10px">
+<span style="width: 36px; height: 36px; border-radius: 11px; background: #17181A; display: flex; align-items: center; justify-content: center">
+<svg class="ring" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+</span>
+<span style="font-family: 'Bricolage Grotesque', Inter, sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.02em">Lembretes</span>
+</header>
+
+<section style="max-width: 900px; margin: 0 auto; padding: 48px 24px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative">
+<div class="eyes-on fade-up" style="display: flex; gap: 6px; padding: 9px 11px 11px; background: #17181A; border-radius: 0 0 20px 20px; margin-top: -48px" aria-hidden="true">
+<div class="eye" style="position: relative; width: 18px; height: 22px; border-radius: 50%; background: #FFFFFF; overflow: hidden"><div style="position: absolute; left: 5px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: #17181A"></div></div>
+<div class="eye" style="position: relative; width: 18px; height: 22px; border-radius: 50%; background: #FFFFFF; overflow: hidden"><div style="position: absolute; left: 5px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: #17181A"></div></div>
+</div>
+<span class="fade-up d1" style="display: inline-flex; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: #3B3E44"><span style="width: 8px; height: 8px; border-radius: 50%; background: #5E9A5C"></span>Pagamento confirmado</span>
+<h1 class="fade-up d2" style="margin: 0; font-size: clamp(40px, 6.5vw, 76px); line-height: 1; letter-spacing: -0.04em; font-weight: 800">Pronto. Agora é só deixar ele lembrar por você.</h1>
+<p class="fade-up d3" style="margin: 0; max-width: 620px; font-size: clamp(17px, 2vw, 19px); line-height: 1.55; color: #4A4D54">O link de download foi para o seu e-mail. Abra no computador com Windows e siga os quatro passos abaixo. Leva um minuto.</p>
+</section>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 8px 24px 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<div class="card" style="flex: 1 1 250px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #17181A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px">1</span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.01em">Baixe o arquivo</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D54">Use o link que chegou no seu e-mail ou na área de membros da plataforma e baixe o <strong>Lembretes.exe</strong>. Faça isso no computador, não no celular.</p>
+</div><div class="card" style="flex: 1 1 250px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #17181A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px">2</span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.01em">Guarde numa pasta fixa</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D54">Mova o arquivo para uma pasta que você não vai apagar, como Documentos. Se ele ficar em Downloads, pode sumir numa limpeza.</p>
+</div><div class="card" style="flex: 1 1 250px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #17181A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px">3</span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.01em">Abra com dois cliques</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D54">Se o Windows mostrar “O Windows protegeu o computador”, clique em “Mais informações” e depois em “Executar assim mesmo”. O sino aparece perto do relógio.</p>
+</div><div class="card" style="flex: 1 1 250px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #17181A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px">4</span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.01em">Deixe no automático</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D54">Em Configurações, ative “Iniciar com o Windows”. Depois crie seus lembretes em “Novo lembrete” e pronto.</p>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 24px 24px 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1 1 420px; background: #17181A; color: #FFFFFF; border-radius: 26px; padding: clamp(24px, 4vw, 36px)">
+<h2 style="margin: 0 0 8px; font-size: 28px; letter-spacing: -0.02em">Atalhos para decorar</h2>
+<p style="margin: 0 0 12px; font-size: 15px; color: #B9BCC2">Funcionam de qualquer lugar do Windows.</p>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #2C2E33; flex-wrap: wrap"><span style="font-size: 16px; color: #E4E6E9">Lembrete rápido em qualquer lugar</span><span style="display: flex; gap: 6px; align-items: center"><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Ctrl</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Alt</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">L</kbd></span></div><div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #2C2E33; flex-wrap: wrap"><span style="font-size: 16px; color: #E4E6E9">Nova tarefa no Notion</span><span style="display: flex; gap: 6px; align-items: center"><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Ctrl</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Alt</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">N</kbd></span></div><div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #2C2E33; flex-wrap: wrap"><span style="font-size: 16px; color: #E4E6E9">Pomodoro</span><span style="display: flex; gap: 6px; align-items: center"><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Ctrl</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">Alt</kbd><kbd style="font-family: inherit; background: #2C2E33; border: 1px solid #3A3D43; border-radius: 8px; padding: 4px 9px; font-size: 14px; color: #FFFFFF">P</kbd></span></div><div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #2C2E33; flex-wrap: wrap"><span style="font-size: 16px; color: #E4E6E9">Ver o que vem a seguir</span><span style="font-size: 14px; color: #B9BCC2">mouse no topo da tela, no centro</span></div><div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid #2C2E33; flex-wrap: wrap"><span style="font-size: 16px; color: #E4E6E9">Pausar ou sair</span><span style="font-size: 14px; color: #B9BCC2">botão direito no sino, perto do relógio</span></div>
+</div>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 26px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.01em">Ligar o Notion (opcional)</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D54">Em Configurações, cole o link do banco do Notion com a sua rotina ou tarefas e o token da sua integração do Notion. O token fica guardado criptografado com a sua conta do Windows.</p>
+</div>
+<div style="background: #DCEBEF; border-radius: 26px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.01em">Levou o código-fonte?</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B3E44">O link do código chega no mesmo e-mail. Ele é seu para estudar e adaptar ao seu uso. A licença é pessoal: não pode revender nem redistribuir.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 24px 24px 80px">
+<div style="background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 26px; padding: 28px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<strong style="font-size: 19px">Travou em alguma coisa?</strong>
+<span style="font-size: 15px; color: #4A4D54">Me chama que eu te ajudo a instalar.</span>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a class="btn" href="mailto:SEU-EMAIL@DOMINIO.COM" style="text-decoration: none; background: #17181A; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 0 20px; min-height: 48px; border-radius: 999px; display: inline-flex; align-items: center">Falar com o suporte</a>
+<a class="btn" href="https://instagram.com/victor.henriquef" style="text-decoration: none; background: #FFFFFF; color: #17181A; border: 1px solid #E2DED6; font-weight: 600; font-size: 15px; padding: 0 20px; min-height: 48px; border-radius: 999px; display: inline-flex; align-items: center">@victor.henriquef</a>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E2DED6">
+<div style="max-width: 1100px; margin: 0 auto; padding: 28px 24px; font-size: 14px; color: #5C5F66">Lembretes · feito por Victor Henrique</div>
+</footer>
+</div>
+</body>
+</html>
