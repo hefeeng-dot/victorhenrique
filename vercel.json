@@ -5,8 +5,23 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/lembretes/",
+      "destination": "/blink/",
+      "permanent": true
+    },
+    {
+      "source": "/lembretes/obrigado/",
+      "destination": "/blink/obrigado/",
+      "permanent": true
     }
   ]
 }
